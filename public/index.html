@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <title>Housing Connect</title>
+</head>
+    <body>
+        <h1>Housing Connect: Listings</h1>
+        <div id="inject"></div>
+
+        <table style="width:600px">
+            <tr>
+                <td>
+                    <div style="position:absolute;">Title:</div>
+                    <input id="title" style="margin-left: 70px" type="text">
+                </td>
+                <td>
+                    <div style="position:absolute;">Address:</div>
+                    <input id="address" style="margin-left: 70px" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="position:absolute;">Host:</div>
+                    <input id="host" style="margin-left: 70px" type="text">
+                </td>
+                <td>
+                    <div style="position:absolute;">Utilities:</div>
+                    <input id="utilities" style="margin-left: 70px" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="position:absolute;">Price:</div>
+                    <input id="price" style="margin-left: 70px" type="text">
+                </td>
+                <td>
+                    <div style="position:absolute;">Size:</div>
+                    <input id="size" style="margin-left: 70px" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="position:absolute;">Pets:</div>
+                    <input id="pets" style="margin-left: 70px" type="radio" name="yn1" value="Yes">Yes
+                    <input style="margin-left: 10px" type="radio" name="yn1" value="No" checked>No
+                </td>
+                <td>
+                    <div style="position:absolute;">Smoking:</div>
+                    <input id="smoking" style="margin-left: 70px" type="radio" name="yn2" value="Yes">Yes
+                    <input style="margin-left: 10px" type="radio" name="yn2" value="No" checked>No
+                </td>
+            </tr>
+        </table>
+
+        <button id="add" type="button" style="margin-top: 5px">Add Listing</button>
+
+        <script src="loadfb.js"></script>
+    </body>
+</html>

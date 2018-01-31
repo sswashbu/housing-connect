@@ -1,4 +1,4 @@
-class listing {
+class Listing {
 	constructor(title){
 		this.title = title;
 	}
@@ -8,14 +8,12 @@ class listing {
 	setRenterName(name){
 		this.host = name;
 	}
-	setPrice(price, duration){
+	setPrice(price){
 		this.price = price;
-		this.duration = duration;
 	}
 	setUtilities(utilities){
 		this.utilities = utilities;
 	}
-
 	setPets(pets){
 		this.pets = pets;
 	}
@@ -26,32 +24,26 @@ class listing {
 		this.size = size;
 	}
 	print(){
-		var petOut;
-		var smokingOut;
-		if(this.pets == true){
+		let petOut;
+		let smokingOut;
+		if(this.pets === true){
 			petOut = "pets okay";
 		} else {petOut = "no pets";}
-		if(this.smoking == true){
+		if(this.smoking === true){
 			smokingOut = "smoking okay";
 		} else {smokingOut = "no smoking";}
 		console.log(
 			"Title: " + this.title 
 			+ "\n Address: " + this.address
-			+ "\n Price: " + this.price + " per " + this.duration
+			+ "\n Price: " + this.price + " per Month"
 			+ "\n Utilities " + this.utilities
 			+ "\n Pets: " + petOut
 			+ "\n Smoking: " + smokingOut
 			+ "\n Size: " + this.size + " square feet"
-			)
+		)
 	}
 }
 
-var x = new listing("Nice seabright appartment $1200/m");
-x.setAddress("123 Nice Home Rd");
-x.setPrice(1200, "month");
-x.setUtilities("Internet, water and electric included");
-x.setPets(false);
-x.setSmoking(true);
-x.setSize(11);
-x.print();
-
+module.exports = {
+	Listing: Listing
+};
