@@ -1,0 +1,59 @@
+html, body {
+font-family: helvatica;
+margin: 0;
+width: 100%;
+height: 100%;
+}
+
+h1 {
+font-size: 48px;
+}
+
+p {
+max-width: 65%;
+min-width: 500px;
+}
+
+div {
+padding-right: 30px;
+height: 100%;
+width: 100%;
+}
+
+.container {
+display: flex;
+}
+
+.search h3 {
+display: inline;
+}
+
+.search li {
+display: inline;
+margin: 0;
+padding: 0 10px;
+}
+
+.search ul {
+display: inline;
+}
+
+.navigation {
+background-color: purple;
+max-width: 25%;
+min-width: 140px;
+flex: 1;
+color: white;
+}
+
+.navigation h2 {
+padding-left: 20px;
+}
+
+.main {
+justify-content: right;
+padding-left: 4rem;
+min-width: 75%;
+flex: 1;
+}
+
