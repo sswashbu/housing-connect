@@ -1,0 +1,41 @@
+<!doctype html>
+<html ng-app>
+  
+  <head>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <title>test</title>
+
+    <!-- <meta http-equiv="refresh" content="500" > -->
+		
+      <h1>Housing Connect</h1>
+      <hr/>
+      <h2>Enter the residence info</h2>
+	 
+      <label>Address:</label>
+      <input type = "text" ng-model = "Address" placeholder = "Enter an address here" required>
+
+      <br/>
+      <label>Contact Number:</label>
+      <!--<input type="number" ng-model="youtPhone" min="0" max="9999999999" required> -->
+      <input type = "number" ng-model = "contactPhone" placeholder = "(xxx)-xxx-xxxx">
+
+      <br/>
+      <label>Contact Email:</label>
+      <input type = "email" ng-model = "contactEmail" placeholder = "JohnDoe@email.com" required>
+
+      <br/>
+      <label>Description of residence:</label>
+
+      <br/>
+      <textarea name="bio" ng-model="yourBio" cols="40" rows="20" placeholder = "Enter a description" required></textarea>
+         <hr/>
+      <h3>Address {{Address}}!</h1>
+      <p>Phone: {{contactPhone}}</p>
+      <p>Email: {{contactEmail}}</p>
+      <hr/>
+      <p>The Residence description ix:&#13;&#10;{{yourBio}}</p>
+
+    </div>
+      
+  </body>
+</html>
