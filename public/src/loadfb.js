@@ -1,16 +1,5 @@
-// Initialize Firebase
-let config = {
-    apiKey: "AIzaSyAsIVIv2lVn2uyvqNv8G5ZktX_4HPzWXMc",
-    authDomain: "housingconnect-3abbc.firebaseapp.com",
-    databaseURL: "https://housingconnect-3abbc.firebaseio.com",
-    projectId: "housingconnect-3abbc",
-    storageBucket: "housingconnect-3abbc.appspot.com",
-    messagingSenderId: "288270102804"
-};
-let firebaseApp = firebase.initializeApp(config);
-
-document.getElementById("add").addEventListener("click", () => {
-    const ref = firebaseApp.database().ref('listing');
+function addListing() {
+    let ref = firebaseApp.database().ref('listing');
 
     let title = document.getElementById("title").value;
     let address = document.getElementById("address").value;
@@ -32,7 +21,12 @@ document.getElementById("add").addEventListener("click", () => {
     listing.setSize(size);
 
     ref.push(listing);
-});
+}
+
+function removeLastListing() {
+    let ref = firebaseApp.database().ref('listing');
+    ref.limitToLast(1).ref.remove();
+}
 
 function gotData(data) {
     let html = "<ul>";
@@ -42,7 +36,7 @@ function gotData(data) {
         html += "<li>" + list.getHTML() + "</li><br>";
     });
     html += "</ul>";
-    document.getElementById("inject").innerHTML = html;
+    document.getElementById('inject').innerHTML = html;
 }
 
 function errData(err) {
@@ -50,7 +44,25 @@ function errData(err) {
 }
 
 const ref = firebaseApp.database().ref('listing');
-ref.on("value", gotData, errData);
+ref.on('value', gotData, errData);
+
+function signOut() {
+    sessionStorage.removeItem('token');
+    firebase.auth().signOut();
+    document.location.reload();
+}
+
+document.onkeydown = handleKey;
+function handleKey(e) {
+    let key = e.keyCode || e.charCode;
+    if(key === 13) {
+        addListing();
+        return false;
+    } else if(key === 27) {
+        removeLastListing();
+        return false;
+    }
+}
 
 
 
@@ -136,6 +148,4 @@ class Listing {
             + "\n Size: " + this.size + " square feet"
         )
     }
-
-
 }

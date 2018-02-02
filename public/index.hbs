@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-    <title>Housing Connect</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+        <script src="src/init.js"></script>
+        <script src="src/checkLoggedIn.js"></script>
+        <title>Housing Connect</title>
+    </head>
     <body>
         <h1>Housing Connect: Listings</h1>
         <div id="inject"></div>
@@ -34,11 +36,11 @@
             <tr>
                 <td>
                     <div style="position:absolute;">Price:</div>
-                    <input id="price" style="margin-left: 70px" type="text">
+                    <input id="price" style="margin-left: 70px" type="number">
                 </td>
                 <td>
                     <div style="position:absolute;">Size:</div>
-                    <input id="size" style="margin-left: 70px" type="text">
+                    <input id="size" style="margin-left: 70px" type="number">
                 </td>
             </tr>
             <tr>
@@ -55,8 +57,9 @@
             </tr>
         </table>
 
-        <button id="add" type="button" style="margin-top: 5px">Add Listing</button>
+        <button type="button" onclick="addListing()" style="margin-top: 5px">Add Listing</button>
+        <button type="button" onclick="signOut()" style="margin-top: 5px">Logout</button>
 
-        <script src="loadfb.js"></script>
+        <script src="src/loadfb.js"></script>
     </body>
 </html>
