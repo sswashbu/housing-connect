@@ -1,16 +1,38 @@
 <!doctype html>
 <html ng-app>
-  
+
   <head>
     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
-    <title>test</title>
+    <title>Housing Connect</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
 
-    <!-- <meta http-equiv="refresh" content="500" > -->
-		
+  <body>
+  <div class="container">
+      <div class="navigation">
+          <h2> Welcome!</h2>
+          <ul>
+              <li><a href="Main.html">Home</a></li>
+              <li><a href="Listings.html">Listings</a></li>
+              <li><a href="ContactUs.html">Contact Us</a></li>
+              <li><a href="CreateAccount.html">Login</a></li>
+              <li><a href="CreateListing.html">Create Listing</a></li>
+          </ul>
+      </div>
+
+      <div class="search">
+          <ul>
+              <li><h3 id="bed">Number of Beds</h3></li>
+              <li><h3 id="bath">Number of Baths</h3></li>
+              <li><h3 id="price">Price Range</h3></li>
+          </ul>
+
+
+      <div class="main">
       <h1>Housing Connect</h1>
       <hr/>
       <h2>Enter your info</h2>
-	 
+
       <label>Name:</label>
       <input type = "text" ng-model = "yourName" placeholder = "Enter a name here" required>
 
@@ -28,7 +50,7 @@
 
       <br/>
       <textarea name="bio" ng-model="yourBio" cols="40" rows="20" placeholder = "Enter a biography" required></textarea>
-         
+
       <h3>Hello {{yourName}}!</h1>
       <p>Phone: {{yourPhone}}</p>
       <p>Email: {{yourEmail}}</p>
@@ -36,6 +58,6 @@
       <p>Your bio is:&#13;&#10;{{yourBio}}</p>
 
     </div>
-      
+  </div>
   </body>
 </html>

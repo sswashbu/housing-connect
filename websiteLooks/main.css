@@ -39,7 +39,7 @@ display: inline;
 }
 
 .navigation {
-background-color: purple;
+background-color: dodgerblue;
 max-width: 25%;
 min-width: 140px;
 flex: 1;
@@ -56,4 +56,3 @@ padding-left: 4rem;
 min-width: 75%;
 flex: 1;
 }
-
