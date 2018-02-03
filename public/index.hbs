@@ -10,6 +10,53 @@
     </head>
     <body>
         <h1>Housing Connect: Listings</h1>
+
+        <div>
+            <b>Filter By:</b>
+            <br><input id="pricefilter" onclick="applyFilters()" type="checkbox"> Price:
+                <input id="minPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Min">
+                <input id="maxPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Max">
+
+            <br><input id="sizefilter" onclick="applyFilters()" type="checkbox"> Size:
+                <input id="minSize" onkeypress="return hitEnter(event)" type="number" placeholder="Min">
+                <input id="maxSize" onkeypress="return hitEnter(event)" type="number" placeholder="Max">
+
+            <br><input id="cityfilter" onclick="applyFilters()" type="checkbox"> City:
+                <input id="cityIn" onkeypress="return hitEnter(event)" type="text">
+            <br><input id="statefilter" onclick="applyFilters()" type="checkbox"> State:
+                <input id="stateIn" onkeypress="return hitEnter(event)" type="text">
+            <br><input id="zipfilter" onclick="applyFilters()" type="checkbox"> ZIP:
+                <input id="zipIn" onkeypress="return hitEnter(event)" type="text">
+
+            <br><input id="hostfilter" onclick="applyFilters()" type="checkbox"> Host:
+                <input id="hostIn" onkeypress="return hitEnter(event)" type="text">
+
+            <br><input id="typefilter" onclick="applyFilters()" type="checkbox"> Type:
+            <select id="typeIn" onchange="applyFilters()">
+                <option value="Apartment">Apartment</option>
+                <option value="House">House</option>
+                <option value="Condo">Condo</option>
+                <option value="Studio">Studio</option>
+                <option value="Room">Room</option>
+            </select>
+            <br><input id="bedfilter" onclick="applyFilters()" type="checkbox"> Type:
+            <select id="bedIn" onchange="applyFilters()">
+                <option value="1">1 Bed</option>
+                <option value="2">2 Beds</option>
+                <option value="3">3 Beds</option>
+                <option value="4">4+ Beds</option>
+            </select>
+            <br><input id="bathfilter" onclick="applyFilters()" type="checkbox"> Type:
+            <select id="bathIn" onchange="applyFilters()">
+                <option value="1">1 Bath</option>
+                <option value="2">2 Baths</option>
+                <option value="3">3+ Baths</option>
+            </select>
+
+            <br><input id="petsfilter" onclick="applyFilters()" type="checkbox"> Pets Allowed
+            <br><input id="smokingfilter" onclick="applyFilters()" type="checkbox"> Smoking Allowed
+        </div>
+
         <div id="inject"></div>
 
         <table style="width:600px">
@@ -19,8 +66,34 @@
                     <input id="title" style="margin-left: 70px" type="text">
                 </td>
                 <td>
+                    <div style="position:absolute;">Type:</div>
+                    <select id="type" style="margin-left: 70px; width: 173px; height:21px;">
+                        <option value="Apartment">Apartment</option>
+                        <option value="House">House</option>
+                        <option value="Condo">Condo</option>
+                        <option value="Studio">Studio</option>
+                        <option value="Room">Room</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <div style="position:absolute;">Address:</div>
                     <input id="address" style="margin-left: 70px" type="text">
+                </td>
+                <td>
+                    <div style="position:absolute;">City:</div>
+                    <input id="city" style="margin-left: 70px" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="position:absolute;">State:</div>
+                    <input id="state" style="margin-left: 70px" type="text">
+                </td>
+                <td>
+                    <div style="position:absolute;">ZIP:</div>
+                    <input id="zip" style="margin-left: 70px" type="text">
                 </td>
             </tr>
             <tr>
@@ -31,6 +104,16 @@
                 <td>
                     <div style="position:absolute;">Utilities:</div>
                     <input id="utilities" style="margin-left: 70px" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="position:absolute;"># Beds:</div>
+                    <input id="bedNum" style="margin-left: 70px" type="number">
+                </td>
+                <td>
+                    <div style="position:absolute;"># Baths:</div>
+                    <input id="bathNum" style="margin-left: 70px" type="number">
                 </td>
             </tr>
             <tr>
