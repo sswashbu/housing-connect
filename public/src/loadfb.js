@@ -299,7 +299,7 @@ class Listing {
         }
 
         let html = "";
-        html += "<table style='width:400px'>";
+        html += "<table style='width:500px'>";
             html += "<tr>";
                 html += "<td>";
                     html += "Title: " + this.title + "<br>";
@@ -317,10 +317,12 @@ class Listing {
                     html += "Pets: " + petOut + "<br>";
                     html += "Smoking: " + smokingOut + "<br>";
                 html += "</td>";
-            html += "</tr>";
+                html += "<td>";
+                    html += "<button onclick='removeListing(" + this.idx + ")'>X</button>";
+                    html += "<input id='available' type='checkbox'>Available";
+                html += "</td>";
+        html += "</tr>";
         html += "</table>";
-
-        html += "<button onclick='removeListing(" + this.idx + ")'>X</button>";
 
         return html;
     }
