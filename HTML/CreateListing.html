@@ -1,32 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html ng-app>
+<head>
+  <title>Housing Connect</title>
+  <link rel="stylesheet" type="text/css" href="../CSS/main.css">
+  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+</head>
 
-  <head>
-    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
-    <title>Housing Connect</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
-  </head>
+<body>
 
-  <body>
-  <div class="container">
-      <div class="navigation">
-          <h2> Welcome!</h2>
-          <ul>
-              <li><a href="Main.html">Home</a></li>
-              <li><a href="Listings.html">Listings</a></li>
-              <li><a href="ContactUs.html">Contact Us</a></li>
-              <li><a href="CreateAccount.html">Login</a></li>
-              <li><a href="CreateListing.html">Create Listing</a></li>
-          </ul>
+  <div class="topnav">
+    <a class="active" href="../index.html">Home</a>
+    <a href="Listings.html">Listings</a>
+    <a href="ContactUs.html">Contact Us</a>
+    <a href="CreateListing.html">Create Listing</a>
+    <a href="CreateAccount.html">Login</a>
+    <div class="search-container">
+      <form action="/action_page.php">
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+    <div class="container">
+
+      <div class="search-settings">
+        <h2>Welcome!</h2>
+        <ul>
+          <li><h3 id="bed">Number of Beds</h3></li>
+          <li><h3 id="bath">Number of Baths</h3></li>
+          <li><h3 id="price">Price Range</h3></li>
+        </ul>
       </div>
-
-      <div class="search">
-          <ul>
-              <li><h3 id="bed">Number of Beds</h3></li>
-              <li><h3 id="bath">Number of Baths</h3></li>
-              <li><h3 id="price">Price Range</h3></li>
-          </ul>
-
 
       <div class="main">
       <h1>Housing Connect</h1>
