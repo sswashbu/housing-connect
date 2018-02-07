@@ -12,7 +12,9 @@
   "dependencies": {
     "consolidate": "^0.15.0",
     "express": "^4.16.2",
+    "firebase": "^4.9.0",
     "firebase-admin": "~5.8.1",
+    "firebase-auth": "^0.1.2",
     "firebase-functions": "^0.8.1",
     "handlebars": "^4.0.11"
   },
