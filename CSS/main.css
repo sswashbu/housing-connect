@@ -25,6 +25,7 @@ div {
   height: 100%;
   width: 100%;
 }
+
 /*
 .navigation {
   background-color: skyblue;
@@ -39,22 +40,31 @@ div {
 
 .navigation ul {
   display: inline;
-} */
+}
+*/
 
-.search-settings {
+.left-bar {
   background-color: #0d0d73;
-  max-width: 25%;
+  max-width: 10%;
   min-width: 140px;
   flex: 1;
-  color: white;
+  color: #c5c6c7;
 }
 
-.search-settings h2 {
+.left-bar h2 {
   padding-left: 20px;
 }
 
+.search-settings{
+  padding-left: 20px;
+}
+
+.priceRange{
+  display: inline;
+}
+
 .main {
-  background-color: #ffaf1a;
+  background-color: #aec6cf;
   justify-content: right;
   padding-left: 4rem;
   min-width: 75%;

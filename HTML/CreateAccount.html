@@ -3,7 +3,7 @@
 <head>
   <title>Housing Connect</title>
   <link rel="stylesheet" type="text/css" href="../CSS/main.css">
-  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
 </head>
 
 <body>
@@ -24,13 +24,23 @@
 
     <div class="container">
 
-      <div class="search-settings">
+      <div class="left-bar">
         <h2>Welcome!</h2>
-        <ul>
-          <li><h3 id="bed">Number of Beds</h3></li>
-          <li><h3 id="bath">Number of Baths</h3></li>
-          <li><h3 id="price">Price Range</h3></li>
-        </ul>
+          <div class="search-settings">
+            <form action="">
+              <h3 id="bed">Number of Beds</h3>
+              <input type = "tel" ng-model = "numberOfBeds">
+              <h3 id="bath">Number of Baths</h3>
+              <input type = "tel" ng-model = "numberOfbaths">
+              <h3 id="price">Price Range</h3>
+              <div class="priceRange">
+                <input type = "tel" ng-model = "minPrice">
+                <input type = "tel" ng-model = "maxPrice">
+            </div>
+            <br>
+            <input type="submit">
+          </form>
+        </div>
       </div>
 
       <div class="main">
@@ -38,23 +48,26 @@
       <hr/>
       <h2>Enter your info</h2>
 
-      <label>Name:</label>
-      <input type = "text" ng-model = "yourName" placeholder = "Enter a name here" required>
+      <form action="">
+        <label for="yourName">Username:</label>
+        <input type = "text" ng-model = "yourName" placeholder = "Enter a username here" required>
+        <br>
+        <label for="yourUsername">Name:</label>
+        <input type = "text" ng-model = "yourUsername" placeholder = "Enter a name here" required>
+        <br>
+        <label for="yourPhone">Phone Number:</label>
+        <input type = "number" ng-model = "yourPhone" placeholder = "(xxx)-xxx-xxxx">
+        <br>
+        <label for="yourEmail">Email Address:</label>
+        <input type = "email" ng-model = "yourEmail" placeholder = "JohnDoe@email.com" required>
+        <br>
+        <label for="yourBio">Bio:</label>
+        <br>
+        <textarea name="bio" ng-model="yourBio" cols="40" rows="20" placeholder = "Enter a biography" required></textarea>
+        <br>
+        <input type="submit">
+      </form>
 
-      <br/>
-      <label>Phone Number:</label>
-      <!--<input type="number" ng-model="youtPhone" min="0" max="9999999999" required> -->
-      <input type = "number" ng-model = "yourPhone" placeholder = "(xxx)-xxx-xxxx">
-
-      <br/>
-      <label>Email Address:</label>
-      <input type = "email" ng-model = "yourEmail" placeholder = "JohnDoe@email.com" required>
-
-      <br/>
-      <label>Bio:</label>
-
-      <br/>
-      <textarea name="bio" ng-model="yourBio" cols="40" rows="20" placeholder = "Enter a biography" required></textarea>
 
       <h3>Hello {{yourName}}!</h1>
       <p>Phone: {{yourPhone}}</p>
