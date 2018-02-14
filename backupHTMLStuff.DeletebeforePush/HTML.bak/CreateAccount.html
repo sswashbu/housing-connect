@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html ng-app>
 <head>
+  <meta charset = "UTF-8">
   <title>Housing Connect</title>
-  <link rel="stylesheet" type="text/css" href="../CSS/main.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+  <link rel = "stylesheet" type = "text/css" href = "../CSS/main.css">
+  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+  <script src = "https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script src = "public/src/init.js"></script>
+  <script src = "public/src/checkLoggedIn.js"></script>
+  <script src = "src/login.js"></script>
 </head>
 
 <body>
@@ -13,7 +18,7 @@
     <a href="Listings.html">Listings</a>
     <a href="ContactUs.html">Contact Us</a>
     <a href="CreateListing.html">Create Listing</a>
-    <a href="CreateAccount.html">Login</a>
+    <a href="CreateAccount.html">Login or Create Account</a>
     <div class="search-container">
       <form action="/action_page.php">
         <input type="text" placeholder="Search.." name="search">
@@ -48,7 +53,25 @@
       <hr/>
       <h2>Enter your info</h2>
 
-      <form action="">
+
+      <div id="login">
+          <h1>Login</h1>
+          <input id="txtEmail" type="email" placeholder="Enter Email"/>
+          <input id="txtPassword" type="password" placeholder="Enter Password"/>
+          <button onclick="login()">Login</button>
+          <button onclick="gotoSignup()">Create an Account</button>
+      </div>
+
+      <div style="display:none" id="signup">
+          <h1>Sign Up</h1>
+          <input id="sEmail" type="email" placeholder="Enter Email"/>
+          <input id="sPassword" type="password" placeholder="Enter Password"/>
+          <button onclick="signup()">Signup</button>
+          <button onclick="cancel()">Cancel</button>
+      </div>
+
+
+      <!-- <form action="">
         <label for="yourName">Username:</label>
         <input type = "text" ng-model = "yourName" placeholder = "Enter a username here" required>
         <br>
@@ -73,7 +96,7 @@
       <p>Phone: {{yourPhone}}</p>
       <p>Email: {{yourEmail}}</p>
       <hr/>
-      <p>Your bio is:&#13;&#10;{{yourBio}}</p>
+      <p>Your bio is:&#13;&#10;{{yourBio}}</p> -->
 
     </div>
   </div>

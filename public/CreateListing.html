@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <meta charset = "UTF-8">
+  <title>Housing Connect</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel = "stylesheet" type = "text/css" href = "../CSS/main.css">
+  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+  <script src = "https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script src = "src/init.js"></script>
+  <script src = "src/checkLoggedIn.js"></script>
+  <script src="src/loadfb.js"></script>
+</head>
+
+<body>
+
+  <div class="topnav">
+    <a href="index.html">Home</a>
+    <a href="Listings.html">Listings</a>
+    <a href="ContactUs.html">Contact Us</a>
+    <a class="active" href="CreateListing.html">Create Listing</a>
+    <a href="CreateAccount.html">Login or Create Account</a>
+    <div class="search-container">
+      <form action="/action_page.php">
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+    <div class="container">
+
+      <div class="left-bar">
+        <h2>Welcome!</h2>
+          <div class="search-settings">
+            <div>
+                <b>Filter By:</b>
+                <br><input id="pricefilter" onclick="applyFilters()" type="checkbox"> Price:
+                    <input id="minPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Min">
+                    <input id="maxPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Max">
+
+                <br><input id="sizefilter" onclick="applyFilters()" type="checkbox"> Size:
+                    <input id="minSize" onkeypress="return hitEnter(event)" type="number" placeholder="Min">
+                    <input id="maxSize" onkeypress="return hitEnter(event)" type="number" placeholder="Max">
+
+                <br><input id="cityfilter" onclick="applyFilters()" type="checkbox"> City:
+                    <input id="cityIn" onkeypress="return hitEnter(event)" type="text">
+                <br><input id="statefilter" onclick="applyFilters()" type="checkbox"> State:
+                    <input id="stateIn" onkeypress="return hitEnter(event)" type="text">
+                <br><input id="zipfilter" onclick="applyFilters()" type="checkbox"> ZIP:
+                    <input id="zipIn" onkeypress="return hitEnter(event)" type="text">
+
+                <br><input id="hostfilter" onclick="applyFilters()" type="checkbox"> Host:
+                    <input id="hostIn" onkeypress="return hitEnter(event)" type="text">
+
+                <br><input id="typefilter" onclick="applyFilters()" type="checkbox"> Type:
+                <select id="typeIn" onchange="applyFilters()">
+                    <option value="Apartment">Apartment</option>
+                    <option value="House">House</option>
+                    <option value="Condo">Condo</option>
+                    <option value="Studio">Studio</option>
+                    <option value="Room">Room</option>
+                </select>
+                <br><input id="bedfilter" onclick="applyFilters()" type="checkbox"> Type:
+                <select id="bedIn" onchange="applyFilters()">
+                    <option value="1">1 Bed</option>
+                    <option value="2">2 Beds</option>
+                    <option value="3">3 Beds</option>
+                    <option value="4">4+ Beds</option>
+                </select>
+                <br><input id="bathfilter" onclick="applyFilters()" type="checkbox"> Type:
+                <select id="bathIn" onchange="applyFilters()">
+                    <option value="1">1 Bath</option>
+                    <option value="2">2 Baths</option>
+                    <option value="3">3+ Baths</option>
+                </select>
+
+                <br><input id="petsfilter" onclick="applyFilters()" type="checkbox"> Pets Allowed
+                <br><input id="smokingfilter" onclick="applyFilters()" type="checkbox"> Smoking Allowed
+            </div>
+        </div>
+      </div>
+
+      <div class="main">
+      <h1>Create a Listing</h1>
+
+            <table style="width:600px">
+                <tr>
+                    <td>
+                        <div style="position:absolute;">Title:</div>
+                        <input id="title" style="margin-left: 70px" type="text">
+                    </td>
+                    <td>
+                        <div style="position:absolute;">Type:</div>
+                        <select id="type" style="margin-left: 70px; width: 173px; height:21px;">
+                            <option value="Apartment">Apartment</option>
+                            <option value="House">House</option>
+                            <option value="Condo">Condo</option>
+                            <option value="Studio">Studio</option>
+                            <option value="Room">Room</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="position:absolute;">Address:</div>
+                        <input id="address" style="margin-left: 70px" type="text">
+                    </td>
+                    <td>
+                        <div style="position:absolute;">City:</div>
+                        <input id="city" style="margin-left: 70px" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="position:absolute;">State:</div>
+                        <input id="state" style="margin-left: 70px" type="text">
+                    </td>
+                    <td>
+                        <div style="position:absolute;">ZIP:</div>
+                        <input id="zip" style="margin-left: 70px" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="position:absolute;">Host:</div>
+                        <input id="host" style="margin-left: 70px" type="text">
+                    </td>
+                    <td>
+                        <div style="position:absolute;">Utilities:</div>
+                        <input id="utilities" style="margin-left: 70px" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="position:absolute;"># Beds:</div>
+                        <input id="bedNum" style="margin-left: 70px" type="number">
+                    </td>
+                    <td>
+                        <div style="position:absolute;"># Baths:</div>
+                        <input id="bathNum" style="margin-left: 70px" type="number">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="position:absolute;">Price:</div>
+                        <input id="price" style="margin-left: 70px" type="number">
+                    </td>
+                    <td>
+                        <div style="position:absolute;">Size:</div>
+                        <input id="size" style="margin-left: 70px" type="number">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="position:absolute;">Pets:</div>
+                        <input id="pets" style="margin-left: 70px" type="radio" name="yn1" value="Yes">Yes
+                        <input style="margin-left: 10px" type="radio" name="yn1" value="No" checked>No
+                    </td>
+                    <td>
+                        <div style="position:absolute;">Smoking:</div>
+                        <input id="smoking" style="margin-left: 70px" type="radio" name="yn2" value="Yes">Yes
+                        <input style="margin-left: 10px" type="radio" name="yn2" value="No" checked>No
+                    </td>
+                </tr>
+            </table>
+
+            <button type="button" onclick="addListing()" style="margin-top: 5px">Add Listing</button>
+
+
+      <!-- <hr/>
+      <h2>Enter the residence info</h2>
+
+      <label>Address:</label>
+      <input type = "text" ng-model = "Address" placeholder = "Enter an address here" required>
+
+      <br/>
+      <label>Contact Number:</label>
+      <input type = "number" ng-model = "contactPhone" placeholder = "(xxx)-xxx-xxxx">
+
+      <br/>
+      <label>Contact Email:</label>
+      <input type = "email" ng-model = "contactEmail" placeholder = "JohnDoe@email.com" required>
+
+      <br/>
+      <label>Description of residence:</label>
+
+      <br/>
+      <textarea name="bio" ng-model="yourBio" cols="40" rows="20" placeholder = "Enter a description" required></textarea>
+         <hr/>
+      <h3>Address {{Address}}!</h1>
+      <p>Phone: {{contactPhone}}</p>
+      <p>Email: {{contactEmail}}</p>
+      <hr/>
+      <p>The Residence description ix:&#13;&#10;{{yourBio}}</p> -->
+
+    </div>
+  </div>
+  </body>
+</html>

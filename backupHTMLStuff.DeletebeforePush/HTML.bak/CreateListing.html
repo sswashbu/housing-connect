@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html ng-app>
 <head>
+  <meta charset = "UTF-8">
   <title>Housing Connect</title>
-  <link rel="stylesheet" type="text/css" href="../CSS/main.css">
+  <link rel = "stylesheet" type = "text/css" href = "CSS/main.css">
   <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+  <script src = "https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script src = "public/src/init.js"></script>
+  <script src = "public/src/checkLoggedIn.js"></script>
 </head>
 
 <body>
@@ -13,7 +17,7 @@
     <a href="Listings.html">Listings</a>
     <a href="ContactUs.html">Contact Us</a>
     <a href="CreateListing.html">Create Listing</a>
-    <a href="CreateAccount.html">Login</a>
+    <a href="CreateAccount.html">Login or Create Account</a>
     <div class="search-container">
       <form action="/action_page.php">
         <input type="text" placeholder="Search.." name="search">
