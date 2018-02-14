@@ -1,28 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-        <script src="src/init.js"></script>
-        <title>Title</title>
-    </head>
-    <body>
-        <div id="login">
-            <h1>Login</h1>
-            <input id="txtEmail" type="email" placeholder="Enter Email"/>
-            <input id="txtPassword" type="password" placeholder="Enter Password"/>
-            <button onclick="login()">Login</button>
-            <button onclick="gotoSignup()">Create an Account</button>
-        </div>
+<html ng-app lang="en">
+<head>
+  <meta charset = "UTF-8">
+  <title>Housing Connect</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel = "stylesheet" type = "text/css" href = "CSS/main.css">
+  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+  <script src = "https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script src = "src/init.js"></script>
+</head>
 
-        <div style="display:none" id="signup">
-            <h1>Sign Up</h1>
-            <input id="sEmail" type="email" placeholder="Enter Email"/>
-            <input id="sPassword" type="password" placeholder="Enter Password"/>
-            <button onclick="signup()">Signup</button>
-            <button onclick="cancel()">Cancel</button>
+<body>
+
+  <div class="topnav">
+    <a href="index.html">Home</a>
+    <a href="Listings.html">Listings</a>
+    <a href="ContactUs.html">Contact Us</a>
+    <a href="CreateListing.html">Create Listing</a>
+    <a class="active" href="CreateAccount.html">Login or Create Account</a>
+    <div class="search-container">
+      <form action="/action_page.php">
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+    <div class="container">
+
+      <div class="left-bar">
+        <h2>Welcome!</h2>
+          <div class="search-settings">
+            <div>
+                <b>Filter By:</b>
+                <br><input id="pricefilter" onclick="applyFilters()" type="checkbox"> Price:
+                    <input id="minPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Min">
+                    <input id="maxPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Max">
+
+                <br><input id="sizefilter" onclick="applyFilters()" type="checkbox"> Size:
+                    <input id="minSize" onkeypress="return hitEnter(event)" type="number" placeholder="Min">
+                    <input id="maxSize" onkeypress="return hitEnter(event)" type="number" placeholder="Max">
+
+                <br><input id="cityfilter" onclick="applyFilters()" type="checkbox"> City:
+                    <input id="cityIn" onkeypress="return hitEnter(event)" type="text">
+                <br><input id="statefilter" onclick="applyFilters()" type="checkbox"> State:
+                    <input id="stateIn" onkeypress="return hitEnter(event)" type="text">
+                <br><input id="zipfilter" onclick="applyFilters()" type="checkbox"> ZIP:
+                    <input id="zipIn" onkeypress="return hitEnter(event)" type="text">
+
+                <br><input id="hostfilter" onclick="applyFilters()" type="checkbox"> Host:
+                    <input id="hostIn" onkeypress="return hitEnter(event)" type="text">
+
+                <br><input id="typefilter" onclick="applyFilters()" type="checkbox"> Type:
+                <select id="typeIn" onchange="applyFilters()">
+                    <option value="Apartment">Apartment</option>
+                    <option value="House">House</option>
+                    <option value="Condo">Condo</option>
+                    <option value="Studio">Studio</option>
+                    <option value="Room">Room</option>
+                </select>
+                <br><input id="bedfilter" onclick="applyFilters()" type="checkbox"> Type:
+                <select id="bedIn" onchange="applyFilters()">
+                    <option value="1">1 Bed</option>
+                    <option value="2">2 Beds</option>
+                    <option value="3">3 Beds</option>
+                    <option value="4">4+ Beds</option>
+                </select>
+                <br><input id="bathfilter" onclick="applyFilters()" type="checkbox"> Type:
+                <select id="bathIn" onchange="applyFilters()">
+                    <option value="1">1 Bath</option>
+                    <option value="2">2 Baths</option>
+                    <option value="3">3+ Baths</option>
+                </select>
+
+                <br><input id="petsfilter" onclick="applyFilters()" type="checkbox"> Pets Allowed
+                <br><input id="smokingfilter" onclick="applyFilters()" type="checkbox"> Smoking Allowed
+            </div>
         </div>
-        <script src="src/login.js"></script>
-    </body>
+      </div>
+
+      <div class="main">
+      <h1>Housing Connect</h1>
+      <hr/>
+      <h2>Enter your info</h2>
+
+      <div id="login">
+          <h1>Login</h1>
+          <input id="txtEmail" type="email" placeholder="Enter Email"/>
+          <input id="txtPassword" type="password" placeholder="Enter Password"/>
+          <button onclick="login()">Login</button>
+          <button onclick="gotoSignup()">Create an Account</button>
+      </div>
+
+      <div style="display:none" id="signup">
+          <h1>Sign Up</h1>
+          <input id="sEmail" type="email" placeholder="Enter Email"/>
+          <input id="sPassword" type="password" placeholder="Enter Password"/>
+          <button onclick="signup()">Signup</button>
+          <button onclick="cancel()">Cancel</button>
+      </div>
+      <script src="src/login.js"></script>
+
+      <!-- <form action="">
+        <label for="yourName">Username:</label>
+        <input type = "text" ng-model = "yourName" placeholder = "Enter a username here" required>
+        <br>
+        <label for="yourUsername">Name:</label>
+        <input type = "text" ng-model = "yourUsername" placeholder = "Enter a name here" required>
+        <br>
+        <label for="yourPhone">Phone Number:</label>
+        <input type = "number" ng-model = "yourPhone" placeholder = "(xxx)-xxx-xxxx">
+        <br>
+        <label for="yourEmail">Email Address:</label>
+        <input type = "email" ng-model = "yourEmail" placeholder = "JohnDoe@email.com" required>
+        <br>
+        <label for="yourBio">Bio:</label>
+        <br>
+        <textarea name="bio" ng-model="yourBio" cols="40" rows="20" placeholder = "Enter a biography" required></textarea>
+        <br>
+        <input type="submit">
+      </form>
+
+
+      <h3>Hello {{yourName}}!</h1>
+      <p>Phone: {{yourPhone}}</p>
+      <p>Email: {{yourEmail}}</p>
+      <hr/>
+      <p>Your bio is:&#13;&#10;{{yourBio}}</p> -->
+
+    </div>
+  </div>
+  </body>
 </html>
