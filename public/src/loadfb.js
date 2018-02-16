@@ -1,7 +1,6 @@
 let listings = [];
 
 const ref = firebaseApp.database().ref('listing');
-// console.log(ref);
 ref.on('value', gotData, errData);
 
 function gotData(data) {
