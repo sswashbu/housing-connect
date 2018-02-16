@@ -1,6 +1,7 @@
 let listings = [];
 
 const ref = firebaseApp.database().ref('listing');
+// console.log(ref);
 ref.on('value', gotData, errData);
 
 function gotData(data) {
@@ -12,7 +13,7 @@ function gotData(data) {
         listings.push({'val': list, 'ref': element.ref, 'visible': true});
         idx++;
     });
-    applyFilters();
+    renderHTML();
 }
 
 function errData(err) {
@@ -299,7 +300,7 @@ class Listing {
         }
 
         let html = "";
-        html += "<table style='width:500px'>";
+        html += "<table style='width:500px' onclick='addListingtoRecentHistory(" + this.idx + ")'>";
             html += "<tr>";
                 html += "<td>";
                     html += "Title: " + this.title + "<br>";
