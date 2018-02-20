@@ -1,8 +1,21 @@
+/** LoadFB
+ *
+ *  Loads Listings from Firebase and displays them on the
+ *  main application webpage. Provides functionality to
+ *  add and remove specific listings as well as filter all
+ *  of the listings.
+ */
+
 let listings = [];
 
 const ref = firebaseApp.database().ref('listing');
 ref.on('value', gotData, errData);
 
+/**
+ * Whenever home listings are modified on Firebase:
+ *  - update our local collection of listings from Firebase
+ *  - re-render the updated listings
+ */
 function gotData(data) {
     let idx = 0;
     listings = [];
@@ -19,6 +32,14 @@ function errData(err) {
     console.log(err.val());
 }
 
+/**
+ * Push a new listing to Firebase
+ *
+ * Whenever a user requests to add a new listing:
+ *  - poll all of the input elements for listing creation
+ *  - make a new listing from polled fields
+ *  - push that listing to Firebase
+ */
 function addListing() {
     let ref = firebaseApp.database().ref('listing');
 
@@ -52,10 +73,20 @@ function addListing() {
     ref.push(listing);
 }
 
+/** Remove the ith listing in the list from Firebase */
 function removeListing(i) {
     listings[i].ref.remove();
 }
 
+/**
+ * Applies one or more filters on the displayed listings
+ *
+ * When a user requests to apply a new filter:
+ *  - make all listings visible
+ *  - poll all of the input elements for filtering
+ *  - apply requested filters based on polled values
+ *  - re-render the updated listings
+ */
 function applyFilters() {
     resetVisibility();
 
@@ -109,6 +140,7 @@ function applyFilters() {
     renderHTML();
 }
 
+/** Display HTML for the listings through injection */
 function renderHTML() {
     let html = "<ul>";
     for(let i = 0; i < listings.length; i++) {
@@ -120,12 +152,14 @@ function renderHTML() {
     document.getElementById('inject').innerHTML = html;
 }
 
+/** Make all listings visible */
 function resetVisibility() {
     for(let i = 0; i < listings.length; i++) {
         listings[i].visible = true;
     }
 }
 
+/** Filter out all listings with prices outside of price range */
 function filterPrice(min, max){
     for(let i = 0; i < listings.length; i++){
         let l = listings[i].val;
@@ -133,6 +167,7 @@ function filterPrice(min, max){
     }
 }
 
+/** Filter out all listings with sizes outside of size range (in sq ft) */
 function filterSize(min, max){
     for(let i = 0; i < listings.length; i++){
         let l = listings[i].val;
@@ -140,6 +175,7 @@ function filterSize(min, max){
     }
 }
 
+/** Filter out all listings that do not permit pets */
 function filterPets(){
     for(let i = 0; i < listings.length; i++){
         let l = listings[i].val;
@@ -147,6 +183,7 @@ function filterPets(){
     }
 }
 
+/** Filter out all listings that do not permit smoking */
 function filterSmoking(){
     for(let i = 0; i < listings.length; i++){
         let l = listings[i].val;
@@ -154,6 +191,7 @@ function filterSmoking(){
     }
 }
 
+/** Filter out all listings that are not in @city */
 function filterCity(city){
     for(let i = 0; i < listings.length; i++){
         let l = listings[i].val;
@@ -161,6 +199,7 @@ function filterCity(city){
     }
 }
 
+/** Filter out all listings that are not in @state */
 function filterState(state){
     for(let i = 0; i < listings.length; i++){
         let l = listings[i].val;
@@ -168,6 +207,7 @@ function filterState(state){
     }
 }
 
+/** Filter out all listings that are not in @zip */
 function filterZip(zip){
     for(let i = 0; i < listings.length; i++){
         let l = listings[i].val;
@@ -175,6 +215,7 @@ function filterZip(zip){
     }
 }
 
+/** Filter out all listings that are not created by @host */
 function filterHost(host){
     for(let i = 0; i < listings.length; i++){
         let l = listings[i].val;
@@ -182,6 +223,7 @@ function filterHost(host){
     }
 }
 
+/** Filter out all listings that are not of type @type */
 function filterType(type){
     for(let i = 0; i < listings.length; i++){
         let l = listings[i].val;
@@ -189,6 +231,7 @@ function filterType(type){
     }
 }
 
+/** Filter all listings by number of baths (1, 2, 3+) */
 function filterBaths(bathNum){
     for(let i = 0; i < listings.length; i++){
         let l = listings[i].val;
@@ -200,6 +243,7 @@ function filterBaths(bathNum){
     }
 }
 
+/** Filter all listings by number of bedrooms (1, 2, 3, 4+) */
 function filterBeds(bedNum){
     for(let i = 0; i < listings.length; i++){
         let l = listings[i].val;
@@ -211,119 +255,27 @@ function filterBeds(bedNum){
     }
 }
 
+/**
+ * Sign out of current login session
+ *
+ * When a user requests to sign out:
+ *  - remove the user's authentication token from sessionStorage
+ *  - sign user out of Firebase
+ *  - redirect to login screen
+ */
 function signOut() {
     sessionStorage.removeItem('token');
     firebase.auth().signOut();
     document.location.reload();
 }
 
+/**
+ * When a user hits the enter key in an input element for filtering:
+ *  - apply the new filters to the listings
+ */
 function hitEnter(e) {
     if(e.keyCode === 13) {
         applyFilters();
         return false;
-    }
-}
-
-
-// Listing Class
-class Listing {
-    constructor() {
-
-    }
-
-    setType(type){
-        this.type = type;
-    }
-    setTitle(title) {
-        this.title = title;
-    }
-    setBedBath(bedNum, bathNum){
-        this.bedNum = bedNum;
-        this.bathNum = bathNum;
-    }
-    setAddress(address, city, state, zip){
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-    }
-    setRenterName(name) {
-        this.host = name;
-    }
-    setPrice(price) {
-        this.price = price;
-    }
-    setUtilities(utilities) {
-        this.utilities = utilities;
-    }
-    setPets(pets) {
-        this.pets = pets;
-    }
-    setSmoking(smoking) {
-        this.smoking = smoking;
-    }
-    setSize(size) {
-        this.size = size;
-    }
-
-    loadFB(object, idx) {
-        this.idx = idx;
-        this.title = object.title;
-        this.type = object.type;
-        this.address = object.address;
-        this.city = object.city;
-        this.state = object.state;
-        this.zip = object.zip;
-        this.bedNum = object.bedNum;
-        this.bathNum = object.bathNum;
-        this.host = object.host;
-        this.price = object.price;
-        this.utilities = object.utilities;
-        this.pets = object.pets;
-        this.smoking = object.smoking;
-        this.size = object.size;
-    }
-
-    getHTML() {
-        let petOut;
-        let smokingOut;
-        if(this.pets === true){
-            petOut = "pets okay";
-        } else {
-            petOut = "no pets";
-        }
-        if(this.smoking === true){
-            smokingOut = "smoking okay";
-        } else {
-            smokingOut = "no smoking";
-        }
-
-        let html = "";
-        html += "<table style='width:500px'>";
-            html += "<tr>";
-                html += "<td>";
-                    html += "Title: " + this.title + "<br>";
-                    html += "Type: " + this.type + "<br>";
-                    html += "# Beds: " + this.bedNum + "<br>";
-                    html += "# Baths: " + this.bathNum + "<br>";
-                    html += "Host: " + this.host + "<br>";
-                    html += "Size: " + this.size + " square feet" + "<br>";
-                html += "</td>";
-                html += "<td>";
-                    html += "Price: $" + this.price + " per Month" + "<br>";
-                    html += "Address: " + this.address + "<br>";
-                    html += this.city + ", " + this.state + " " + this.zip + "<br>";
-                    html += "Utilities: " + this.utilities + "<br>"
-                    html += "Pets: " + petOut + "<br>";
-                    html += "Smoking: " + smokingOut + "<br>";
-                html += "</td>";
-                html += "<td>";
-                    html += "<button onclick='removeListing(" + this.idx + ")'>X</button>";
-                    html += "<input id='available' type='checkbox'>Available";
-                html += "</td>";
-        html += "</tr>";
-        html += "</table>";
-
-        return html;
     }
 }
