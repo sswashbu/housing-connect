@@ -79,7 +79,7 @@ class Listing {
         }
 
         let html = "";
-        html += "<table style='width:500px'>";
+        html += "<table onclick='addListingToRecentHistory(" + this.idx +  ")' style='width:500px'>";
         html += "<tr>";
         html += "<td>";
         html += "Title: " + this.title + "<br>";
