@@ -13,9 +13,9 @@ function addListingtoRecentHistory(idx) {
     // If successful, do nothing
     // Else, push the listing key to the user's viewing history
     keyPromise.then((res) => {
-        console.log(res);
+    //  console.log(res);
     }).catch((rej) => {
-        console.log(rej);
+    //  console.log(rej);
         RecentHistoryRef.push(listingKey);
     });
 
@@ -36,9 +36,9 @@ function saveListing(idx) {
     // If successful, do nothing
     // Else, push the listing key to the user's viewing history
     keyPromise.then((res) => {
-        console.log(res);
+    //  console.log(res);
     }).catch((rej) => {
-        console.log(rej);
+    //  console.log(rej);
         SavedListingsRef.push(listingKey);
     });
 }
