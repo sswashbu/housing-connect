@@ -71,10 +71,10 @@ const getUserHistoryRef = (uid) => {
     if (uid) {
         return firebaseApp.database().ref('users/' + uid + '/RecentHistory');
     }
-}
+};
 
 const getUserSaveListingRef = (uid) => {
     if (uid) {
         return firebaseApp.database().ref('users/' + uid + '/SavedListings');
     }
-}
+};
