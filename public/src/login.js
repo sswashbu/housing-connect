@@ -61,9 +61,7 @@ function signUp() {
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
     firebase.auth().createUserWithEmailAndPassword(email, pass).then(user => {
         user.getIdToken(true).then(idToken => {
-            console.log("hi1");
             addUser().then(() => {
-                console.log("hi3");
                 sessionStorage.setItem('token', idToken);
                 window.location = "/";
             });
@@ -83,7 +81,6 @@ function loginE(e) {
 }
 
 function addUser() {
-    console.log("hi2");
     return new Promise ((resolve, reject) => {
         let isTenant = document.getElementById("tenant").checked;
         if (isTenant) {
@@ -101,7 +98,7 @@ function addTenant(resolve) {
     const typeRef = getUserTypeRef(uid);
 
     typeRef.push('tenant').then(() => {
-        resolve('done');
+        resolve();
     });
 }
 
