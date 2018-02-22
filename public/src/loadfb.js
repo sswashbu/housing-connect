@@ -1,6 +1,7 @@
 let listings = [];
 
 const ref = firebaseApp.database().ref('listing');
+// console.log(ref);
 ref.on('value', gotData, errData);
 
 function gotData(data) {
@@ -12,7 +13,7 @@ function gotData(data) {
         listings.push({'val': list, 'ref': element.ref, 'visible': true});
         idx++;
     });
-    applyFilters();
+    renderHTML();
 }
 
 function errData(err) {
@@ -319,6 +320,7 @@ class Listing {
                 html += "</td>";
                 html += "<td>";
                     html += "<button onclick='removeListing(" + this.idx + ")'>X</button>";
+                    html += "<button onclick= 'saveListing(" + this.idx + ")'>Save Listing</button>";
                     html += "<input id='available' type='checkbox'>Available";
                 html += "</td>";
         html += "</tr>";

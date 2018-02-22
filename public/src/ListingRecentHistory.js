@@ -15,9 +15,32 @@ function addListingtoRecentHistory(idx) {
     keyPromise.then((res) => {
         console.log(res);
     }).catch((rej) => {
+        console.log(rej);
         RecentHistoryRef.push(listingKey);
     });
 
+}
+
+function saveListing(idx) {
+    // Get Reference to User Saved Listings
+    const user = firebaseApp.auth().currentUser;
+    const uid = getUID(user);
+    const SavedListingsRef = getUserSaveListingRef(uid);
+
+    // Get the Listing's Key Value in the Database
+    let listingKey = listings[idx].ref.key;
+
+    // Tries to find the Key
+    let keyPromise = keyExists(SavedListingsRef, listingKey);
+
+    // If successful, do nothing
+    // Else, push the listing key to the user's viewing history
+    keyPromise.then((res) => {
+        console.log(res);
+    }).catch((rej) => {
+        console.log(rej);
+        SavedListingsRef.push(listingKey);
+    });
 }
 
 function keyExists(userHistoryRef, listingKey) {
@@ -49,5 +72,13 @@ const getUserHistoryRef = (uid) => {
         return firebaseApp.database().ref('users/' + uid + '/RecentHistory');
     } else {
         return firebaseApp.database().ref('users/anon/RecentHistory');
+    };
+}
+
+const getUserSaveListingRef = (uid) => {
+    if (uid) {
+        return firebaseApp.database().ref('users/' + uid + '/SavedListings');
+    } else {
+        return firebaseApp.database().ref('users/anon/SavedListings');
     };
 }
