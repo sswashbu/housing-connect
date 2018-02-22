@@ -13,7 +13,7 @@ function gotData(data) {
         listings.push({'val': list, 'ref': element.ref, 'visible': true});
         idx++;
     });
-    renderHTML();
+    applyFilters();
 }
 
 function errData(err) {
