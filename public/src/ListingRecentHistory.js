@@ -70,15 +70,11 @@ const getUID = (user) => {
 const getUserHistoryRef = (uid) => {
     if (uid) {
         return firebaseApp.database().ref('users/' + uid + '/RecentHistory');
-    } else {
-        return firebaseApp.database().ref('users/anon/RecentHistory');
-    };
+    }
 }
 
 const getUserSaveListingRef = (uid) => {
     if (uid) {
         return firebaseApp.database().ref('users/' + uid + '/SavedListings');
-    } else {
-        return firebaseApp.database().ref('users/anon/SavedListings');
-    };
+    }
 }
