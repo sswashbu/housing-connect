@@ -25,7 +25,7 @@ function gotData(data) {
         listings.push({'val': list, 'ref': element.ref, 'visible': true});
         idx++;
     });
-    applyFilters();
+    renderHTML();
 }
 
 function errData(err) {
