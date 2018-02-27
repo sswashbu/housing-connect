@@ -61,8 +61,10 @@ function signUp() {
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
     firebase.auth().createUserWithEmailAndPassword(email, pass).then(user => {
         user.getIdToken(true).then(idToken => {
-            sessionStorage.setItem('token', idToken);
-            window.location = "/";
+            addUser().then(() => {
+                sessionStorage.setItem('token', idToken);
+                window.location = "/";
+            });
         });
     }).catch(error => {
 
@@ -77,3 +79,50 @@ function loginE(e) {
         return false;
     }
 }
+
+function addUser() {
+    return new Promise ((resolve, reject) => {
+        let isTenant = document.getElementById("tenant").checked;
+        if (isTenant) {
+            addTenant(resolve);
+        } else {
+            addHomeowner(resolve);
+        }
+    });
+}
+
+function addTenant(resolve) {
+    // Get Reference to User type
+    const user = firebaseApp.auth().currentUser;
+    const uid = getUID(user);
+    const typeRef = getUserTypeRef(uid);
+
+    typeRef.push('tenant').then(() => {
+        resolve();
+    });
+}
+
+function addHomeowner(resolve) {
+    // Get Reference to User type
+    const user = firebaseApp.auth().currentUser;
+    const uid = getUID(user);
+    const typeRef = getUserTypeRef(uid);
+
+    typeRef.push('homeowner').then(() => {
+        resolve('done');
+    });
+}
+
+// Testing Storing when Not Logged in
+const getUID = (user) => {
+    if (user) {
+        return user.uid;
+    } else {
+        return false;
+    }
+};
+
+const getUserTypeRef = (uid) => {
+    if (uid)
+        return firebaseApp.database().ref('users/' + uid + "/type");
+};
