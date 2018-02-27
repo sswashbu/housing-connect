@@ -87,10 +87,10 @@ class Listing {
         html += "# Beds: " + this.bedNum + "<br>";
         html += "# Baths: " + this.bathNum + "<br>";
         html += "Host: " + this.host + "<br>";
-        html += "Size: " + this.size + " square feet" + "<br>";
+        html += "Size: " + this.size + " sqft" + "<br>";
         html += "</td>";
         html += "<td>";
-        html += "Price: $" + this.price + " per Month" + "<br>";
+        html += "Price: $" + this.price + "/Mo" + "<br>";
         html += "Address: " + this.address + "<br>";
         html += this.city + ", " + this.state + " " + this.zip + "<br>";
         html += "Utilities: " + this.utilities + "<br>"
@@ -103,7 +103,7 @@ class Listing {
         html += "</td>";
         html += "</tr>";
         html += "</table>";
-
+        // console.log(html);
         return html;
     }
 }
