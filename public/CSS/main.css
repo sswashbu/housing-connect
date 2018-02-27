@@ -4,7 +4,9 @@ html, body {
   font-family: helvatica;
   margin: 0;
   width: 100%;
-  height: 100%;
+  min-height: -webkit-fill-available;
+  display: flex;
+  flex-flow: column;
 }
 
 h1 {
@@ -22,8 +24,8 @@ div {
 
 .container {
   display: flex;
-  height: 100%;
   width: 100%;
+  flex: 1 1 auto;
 }
 
 /*
@@ -67,13 +69,13 @@ div {
   background-color: #aec6cf;
   justify-content: right;
   padding-left: 4rem;
-  min-width: 75%;
   flex: 1;
 }
 
 .topnav {
   overflow: hidden;
   background-color: #0b0c10;
+  flex: 0 1 auto;
 }
 
 .topnav a {
@@ -138,4 +140,36 @@ div {
   .topnav input[type=text] {
     border: 1px solid #ccc;
   }
+}
+
+#minPrice {
+	margin-left: 9.5px;
+}
+
+#minSize {
+	margin-left: 15px;
+}
+
+#cityIn {
+	margin-left: 15px;
+}
+
+#stateIn {
+	margin-left: 10.5px;
+}
+#zipIn {
+	margin-left: 18.5px;
+}
+
+#hostIn {
+	margin-left: 12.5px;
+}
+
+#maxPrice,  #maxSize  {
+	margin-left: 75px;
+}
+
+#typeIn, #bedIn, #bathIn {
+	margin-left: 11px;
+	width: 163px;
 }

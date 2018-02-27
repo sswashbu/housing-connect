@@ -87,8 +87,11 @@
       <div id="login">
           <h1>Login</h1>
           <input id="txtEmail" type="email" placeholder="Enter Email"/>
+          <br>
           <input id="txtPassword" type="password" placeholder="Enter Password"/>
+          <br>
           <button onclick="login()">Login</button>
+          <br>
           <button onclick="goToSignUp()">Create an Account</button>
       </div>
 
@@ -98,35 +101,11 @@
           <input id="sPassword" type="password" placeholder="Enter Password"/>
           <button onclick="signUp()">Signup</button>
           <button onclick="cancel()">Cancel</button>
+          <br>
+          <input type="radio" id="tenant" name="group" checked="checked"> Tenant &nbsp
+          <input type="radio" id="homeowner" name="group"> Homeowner<br>
       </div>
       <script src="src/login.js"></script>
-
-      <!-- <form action="">
-        <label for="yourName">Username:</label>
-        <input type = "text" ng-model = "yourName" placeholder = "Enter a username here" required>
-        <br>
-        <label for="yourUsername">Name:</label>
-        <input type = "text" ng-model = "yourUsername" placeholder = "Enter a name here" required>
-        <br>
-        <label for="yourPhone">Phone Number:</label>
-        <input type = "number" ng-model = "yourPhone" placeholder = "(xxx)-xxx-xxxx">
-        <br>
-        <label for="yourEmail">Email Address:</label>
-        <input type = "email" ng-model = "yourEmail" placeholder = "JohnDoe@email.com" required>
-        <br>
-        <label for="yourBio">Bio:</label>
-        <br>
-        <textarea name="bio" ng-model="yourBio" cols="40" rows="20" placeholder = "Enter a biography" required></textarea>
-        <br>
-        <input type="submit">
-      </form>
-
-
-      <h3>Hello {{yourName}}!</h1>
-      <p>Phone: {{yourPhone}}</p>
-      <p>Email: {{yourEmail}}</p>
-      <hr/>
-      <p>Your bio is:&#13;&#10;{{yourBio}}</p> -->
 
     </div>
   </div>
