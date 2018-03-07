@@ -7,6 +7,7 @@
 */
 
 let listings = [];
+var images = [];
 
 const ref = firebaseApp.database().ref('listing');
 ref.on('value', gotData, errData);
@@ -96,6 +97,8 @@ function applyFilters() {
   if(smokingOn)
   filterSmoking();
 
+  images = ["house1.jpg", "house2.jpg", "house3.jpg", "house4.jpg", "house5.jpg", "house6.jpg", "house7.jpg", "house8.jpg", "house9.jpg", "house10.jpg"]
+
   renderHTML();
 }
 
@@ -123,60 +126,159 @@ function renderHTML() {
 }
 
 function createListing(listing){
-
+  var smoking;
+  var pets;
+  if(listing.val.pets === true){
+      pets = "pets okay";
+  } else {
+      pets = "no pets";
+  }
+  if(listing.val.smoking === true){
+      smoking = "smoking okay";
+  } else {
+      smoking = "no smoking";
+  }
+  var shadowDiv = document.createElement("div");
   var mainDiv = document.createElement("div");
   var titleDiv = document.createElement("div");
   var priceDiv = document.createElement("div");
   var locDiv = document.createElement("div");
+  var remainingDiv = document.createElement("div");
+  var hostDiv = document.createElement("div");
+  var bedBathDiv = document.createElement("div");
+  var sizeDiv = document.createElement("div");
+  var smokeDiv = document.createElement("div");
+  var petsDiv = document.createElement("div");
+  var longLocDiv = document.createElement("div");
+  var typeDiv = document.createElement("div");
+  var deleteButton = document.createElement("button");
 
-  mainDiv.className = "MainDiv"
+  remainingDiv.className = "remainingDiv";
+  remainingDiv.style.display = "none";
+  remainingDiv.appendChild(longLocDiv);
+  remainingDiv.appendChild(hostDiv);
+  remainingDiv.appendChild(typeDiv);
+  remainingDiv.appendChild(bedBathDiv);
+  remainingDiv.appendChild(sizeDiv);
+  remainingDiv.appendChild(smokeDiv);
+  remainingDiv.appendChild(petsDiv);
+
+  mainDiv.className = "mainDiv";
+  mainDiv.style.margin = "10px";
+  mainDiv.style.paddingTop = "100px";
+  getpicture(mainDiv);
   titleDiv.style.margin = 0;
-  titleDiv.className = "TitleDiv"
+  titleDiv.className = "titleDiv";
   priceDiv.style.margin = 0;
-  priceDiv.className = "PriceDiv"
+  priceDiv.className = "priceDiv";
   locDiv.style.margin = 0;
-  locDiv.className = "LocDiv"
+  locDiv.className = "locDiv";
+  longLocDiv.style.margin = 0;
+  longLocDiv.className = "longLocDiv";
+  hostDiv.style.margin = 0;
+  hostDiv.className = "hostDiv";
+  typeDiv.style.margin = 0;
+  typeDiv.className = "typeDiv";
+  sizeDiv.style.margin = 0;
+  sizeDiv.className = "sizeDiv";
+  bedBathDiv.style.margin = 0;
+  bedBathDiv.className = "bedBathDiv";
+  smokeDiv.style.margin = 0;
+  smokeDiv.className = "smokeDiv";
+  petsDiv.style.margin = 0;
+  petsDiv.className = "petsDiv";
+
+  deleteButton.onclick = function(){removeListing(listing.val.idx)};
+  deleteButton.innerHTML = "X";
 
   mainDiv.appendChild(titleDiv);
   mainDiv.appendChild(priceDiv);
   mainDiv.appendChild(locDiv);
+  mainDiv.appendChild(remainingDiv);
+  mainDiv.appendChild(deleteButton);
 
   var titleH4 = document.createElement("h4");
   var priceP = document.createElement("P");
   var locP = document.createElement("P");
+  var longLocP = document.createElement("P");
+  var hostP = document.createElement("P");
+  var typeP = document.createElement("P");
+  var sizeP = document.createElement("P");
+  var bedBathP = document.createElement("P");
+  var smokeP = document.createElement("P");
+  var petsP = document.createElement("P");
 
   titleH4.style.margin = 0;
-  titleH4.className = "TitleH4"
-  titleH4.style.display = "block"
-
+  titleH4.className = "TitleH4";
   priceP.style.margin = 0;
-  priceP.className = "PricePara"
-  priceP.style.display = "block"
-
+  priceP.className = "PricePara";
   locP.style.margin = 0;
-  locP.className = "LocPara"
-  locP.style.display = "block"
+  locP.className = "LocPara";
+  longLocP.style.margin = 0;
+  longLocP.className = "longLocPara";
+  hostP.style.margin = 0;
+  hostP.className = "hostPara";
+  typeP.style.margin = 0;
+  typeP.className = "typePara";
+  sizeP.style.margin = 0;
+  sizeP.className = "sizePara";
+  bedBathP.style.margin = 0;
+  bedBathP.className = "bedBathPara";
+  smokeP.style.margin = 0;
+  smokeP.className = "smokePara";
+  petsP.style.margin = 0;
+  petsP.className = "petsPara";
 
   titleDiv.appendChild(titleH4);
   priceDiv.appendChild(priceP);
   locDiv.appendChild(locP);
+  longLocDiv.appendChild(longLocP);
+  hostDiv.appendChild(hostP);
+  typeDiv.appendChild(typeP);
+  bedBathDiv.appendChild(sizeP);
+  sizeDiv.appendChild(bedBathP);
+  smokeDiv.appendChild(smokeP);
+  petsDiv.appendChild(petsP);
 
   titleH4.innerHTML = listing.val.title;
-  priceP.innerHTML =  + listing.val.price;
+  priceP.innerHTML = "$" + listing.val.price.toLocaleString() + "/Mo";
   locP.innerHTML = "Address: " + listing.val.address;
+  longLocP.innerHTML = listing.val.city + ", " + listing.val.state + " " + listing.val.zip;
+  typeP.innerHTML = listing.val.type
+  hostP.innerHTML = "Host: " + listing.val.host;
+  sizeP.innerHTML = listing.val.size + " sqft";
+  bedBathP.innerHTML = "<i class=\"fas fa-bed\"></i> " + listing.val.bedNum + "  <i class=\"fas fa-bath\"></i> " + listing.val.bathNum;
+  smokeP.innerHTML = smoking;
+  petsP.innerHTML = pets;
 
-  mainDiv.onclick = function(){hide(locDiv)};
+  mainDiv.onclick = function(){hide(remainingDiv, listing.val.idx)};
+
+  shadowDiv.className = "shadowDiv"
+  shadowDiv.appendChild(mainDiv)
 
   document.getElementById('inject').appendChild(mainDiv);
   // document.body.appendChild(mainDiv);
   console.log(mainDiv);
 }
 
-function hide(div){
-  // console.log(div);
-  console.log(div.getElementsByClassName("LocDiv")[0]);
-  var div = div.getElementsByClassName("LocDiv")[0];
+function getpicture(div){
+    var dir = 'pictures/';
+    var randomCount = Math.round(Math.random() * (images.length - 1));
+    // console.log(randomCount);
+    // console.log(images[randomCount]);
+    div.style.backgroundImage = "url(" + dir + images[randomCount] + ")";
+    // console.log(images);
+    images.splice(randomCount, 1)
+    // console.log(images);
+}
+
+function hide(div, idx){
+  console.log(div);
+  // console.log(div.getElementsByClassName("LocDiv")[0]);
+  // var div = div.getElementsByClassName("LocDiv")[0];
   div.style.display = div.style.display == "none" ? "block" : "none";
+  addListingToRecentHistory(idx)
+  // console.log("index: " + idx);
 };
 
 // /** Display HTML for the listings through injection */

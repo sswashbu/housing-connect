@@ -37,4 +37,5 @@ function addListing() {
     listing.setSize(size);
 
     ref.push(listing);
+    window.location.href="/Listings.html";
 }
