@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <meta charset = "UTF-8">
+  <title>Housing Connect</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel = "stylesheet" type = "text/css" href = "CSS/main.css">
+  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+  <script src = "https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script src = "src/init.js"></script>
+  <script src = "src/checkLoggedIn.js"></script>
+  <script src = "src/classes/Listing.js"></script>
+  <script src = "src/updateUser.js"></script>
+</head>
+
+<body>
+  <div class="topnav">
+     <a  href="Listings.html">Listings</a>
+    <a class="active"href="CreateListing.html">Create Listing</a>
+	<p id="logo"> HOUSING CONNECT</p>
+    </div>
+  </div>
+
+  <div class="container">
+      <div class="left-bar">
+          
+      </div>
+
+    <div class="main">
+
+	<div id="addListingInput">
+    <table style="width:600px">
+        <tr>
+            <td>
+                <input type="radio" id="tenant" name="group" checked="checked"> Tenant &nbsp
+				<input type="radio" id="homeowner" name="group"> Homeowner<br>
+            </td>
+            <td>
+                <div style="position:absolute;">First Name:</div>
+                <input id="first" style="margin-left: 70px" type="text">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="position:absolute;">Last Name:</div>
+                <input id="last" style="margin-left: 70px" type="text">
+            </td>
+            <td>
+                <div style="position:absolute;">Bio:</div>
+                <input id="bio" style="margin-left: 70px" type="text">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="position:absolute;">Email:</div>
+                <input id="email" style="margin-left: 70px" type="text">
+            </td>
+            <td>
+                <div style="position:absolute;">Phone:</div>
+                <input id="phone" style="margin-left: 70px" type="text">
+            </td>
+        </tr>
+    </table>
+
+    <button type="button" id= "add" onclick="updateUser()" style="margin-top: 5px">Add Listing</button>
+
+
+      <!-- <hr/>
+      <h2>Enter the residence info</h2>
+
+      <label>Address:</label>
+      <input type = "text" ng-model = "Address" placeholder = "Enter an address here" required>
+
+      <br/>
+      <label>Contact Number:</label>
+      <input type = "number" ng-model = "contactPhone" placeholder = "(xxx)-xxx-xxxx">
+
+      <br/>
+      <label>Contact Email:</label>
+      <input type = "email" ng-model = "contactEmail" placeholder = "JohnDoe@email.com" required>
+
+      <br/>
+      <label>Description of residence:</label>
+
+      <br/>
+      <textarea name="bio" ng-model="yourBio" cols="40" rows="20" placeholder = "Enter a description" required></textarea>
+         <hr/>
+      <h3>Address {{Address}}!</h1>
+      <p>Phone: {{contactPhone}}</p>
+      <p>Email: {{contactEmail}}</p>
+      <hr/>
+      <p>The Residence description ix:&#13;&#10;{{yourBio}}</p> -->
+	</div>
+    </div>
+  </div>
+  </body>
+</html>

@@ -9,6 +9,8 @@
 function addListing() {
     let ref = firebaseApp.database().ref('listing');
 
+    //let email = firebaseApp.getAuth().password.email
+
     let title = document.getElementById("title").value;
     let type = document.getElementById("type").value;
     let address = document.getElementById("address").value;
