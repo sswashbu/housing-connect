@@ -173,3 +173,7 @@ div {
 	margin-left: 11px;
 	width: 163px;
 }
+
+#profile h1 {
+	display: inline;
+}
