@@ -4,7 +4,7 @@ window.addEventListener('load', userLoggedIn);
 saveBtn.addEventListener('click', saveEdit);
 function userLoggedIn() {
     let user = firebaseApp.auth().currentUser;
-    if (!user) window.location = "/login";
+    // if (!user) window.location = "/login";
     initDisplayProfile();
 }
 
@@ -13,8 +13,8 @@ function userLoggedIn() {
 // Else, display the found data
 function initDisplayProfile() {
     let user = firebaseApp.auth().currentUser;
-    let uid = user.uid;
-    // let uid = "anon";
+    // let uid = user.uid;
+    let uid = "anon";
     firebase.database().ref('/users/' + uid).once('value').then(snapshot => {
         if (!snapshot.val()) initProfile();
         displayUserProfile();
@@ -24,8 +24,8 @@ function initDisplayProfile() {
 // Init Profile if No Ref found
 function initProfile() {
     let user = firebaseApp.auth().currentUser;
-    let uid = user.uid;
-    // let uid = "anon";
+    // let uid = user.uid;
+    let uid = "anon";
     let userRef = firebaseApp.database().ref('/users/' + uid);
     let initData = {
         name: "n/a",
@@ -39,8 +39,8 @@ function initProfile() {
 // Displays User Profile
 function displayUserProfile() {
     let user = firebaseApp.auth().currentUser;
-    let uid = user.uid;
-    // let uid = "anon";
+    // let uid = user.uid;
+    let uid = "anon";
     firebaseApp.database().ref('/users/' + uid).once('value').then(snapshot => {
         let data = snapshot.val();
         let name = data.name || "n/a";
@@ -49,6 +49,7 @@ function displayUserProfile() {
         let about = data.about || "n/a";
 
         document.getElementById('name').textContent = name;
+        document.getElementById('nameTxt').value = name;
         document.getElementById('phone').value = phone;
         document.getElementById('email').value = email;
         document.getElementById('about').value = about;
@@ -58,8 +59,8 @@ function displayUserProfile() {
 // Save Edited User Profile
 function saveEdit() {
     let user = firebaseApp.auth().currentUser;
-    let uid = user.uid;
-    // let uid = "anon";
+    // let uid = user.uid;
+    let uid = "anon";
     let userRef = firebaseApp.database().ref('/users/' + uid);
     let editData = {
         name: document.getElementById('nameTxt').value,
