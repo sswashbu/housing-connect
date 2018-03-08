@@ -1,10 +1,13 @@
 const saveBtn = document.getElementById('saveBtn');
 
-window.addEventListener('load', userLoggedIn);
+// window.addEventListener('load', userLoggedIn);
 saveBtn.addEventListener('click', saveEdit);
+
+setTimeout(userLoggedIn, 2000);
+
 function userLoggedIn() {
     let user = firebaseApp.auth().currentUser;
-    // if (!user) window.location = "/login";
+    if (!user) window.location = "/login";
     initDisplayProfile();
 }
 
