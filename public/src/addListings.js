@@ -9,7 +9,10 @@
 function addListing() {
     let ref = firebaseApp.database().ref('listing');
 
-    //let email = firebaseApp.getAuth().password.email
+    var user = firebase.auth().currentUser;
+    var email;
+    if (user != null) {
+  email = user.email;}
 
     let title = document.getElementById("title").value;
     let type = document.getElementById("type").value;
@@ -30,7 +33,7 @@ function addListing() {
     listing.setTitle(title);
     listing.setType(type);
     listing.setAddress(address, city, state, zip);
-    listing.setRenterName(host);
+    listing.setRenterName(email);
     listing.setPrice(price);
     listing.setUtilities(utilities);
     listing.setBedBath(bedNum, bathNum);

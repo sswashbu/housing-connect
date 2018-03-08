@@ -341,6 +341,16 @@ function createListing(listing){
 	  sizeP.innerHTML = "Size: " + listing.val.size + "square feet";
 
 	}
+	var user = firebase.auth().currentUser;
+    var email;
+    if (user != null) {
+  		email = user.email;}
+	if(listing.val.host == email){
+		var deleteButton = document.createElement("button");
+		deleteButton.onclick = function(){removeListing(listing.val.idx)};
+  deleteButton.innerHTML = "X";
+  mainDiv.appendChild(deleteButton);
+	}
   document.getElementById('inject').appendChild(mainDiv);
   // document.body.appendChild(mainDiv);
   console.log(mainDiv);
