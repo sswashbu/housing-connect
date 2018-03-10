@@ -57,7 +57,7 @@ function applyFilters() {
   let cityOn = document.getElementById("cityfilter").checked;
   let stateOn = document.getElementById("statefilter").checked;
   let zipOn = document.getElementById("zipfilter").checked;
-  let hostOn = document.getElementById("hostfilter").checked;
+
   let typeOn = document.getElementById("typefilter").checked;
   let bathOn = document.getElementById("bathfilter").checked;
   let bedOn = document.getElementById("bedfilter").checked;
@@ -69,10 +69,18 @@ function applyFilters() {
   let city = document.getElementById("cityIn").value;
   let state = document.getElementById("stateIn").value;
   let zip = document.getElementById("zipIn").value;
-  let host = document.getElementById("hostIn").value;
+
   let type = document.getElementById("typeIn").value;
   let bathNum = ~~document.getElementById("bathIn").value;
   let bedNum = ~~document.getElementById("bedIn").value;
+
+  var user = firebase.auth().currentUser;
+    var email;
+    if (user != null) {
+  		email = user.email;}
+
+  let myListings = document.getElementById("myListings").checked; 
+  if(myListings) filterHost(email);
 
 
   if(priceOn && (minPrice || maxPrice))
@@ -85,8 +93,7 @@ function applyFilters() {
   filterState(state);
   if(zipOn && zip)
   filterZip(zip);
-  if(hostOn && host)
-  filterHost(host);
+  
   if(typeOn && type)
   filterType(type);
   if(bathOn && bathNum)
@@ -129,14 +136,23 @@ function createListing(listing){
 
   var mainDiv = document.createElement("button");
   mainDiv.setAttribute("id", "listing");
+  var textDiv = document.createElement("div");
+  var imageDiv = document.createElement("div");
+  imageDiv.style.backgroundImage = "url(" + listing.val.image + ")";
+  textDiv.setAttribute("id", "text");
+
+  
+  
 
   mainDiv.onclick = function() {view(listing);};
 	if(listing.simpleView){
+		imageDiv.setAttribute("id", "imageSmall");
   var titleDiv = document.createElement("div");
   var priceDiv = document.createElement("div");
 	  var locDiv = document.createElement("div");
 
 	  mainDiv.className = "MainDiv"
+	  textDiv.className = "TextDiv"
 	  titleDiv.style.margin = 0;
 	  titleDiv.className = "TitleDiv"
 	  priceDiv.style.margin = 0;
@@ -144,9 +160,10 @@ function createListing(listing){
 	  locDiv.style.margin = 0;
 	  locDiv.className = "LocDiv"
 
-	  mainDiv.appendChild(titleDiv);
-	  mainDiv.appendChild(priceDiv);
-	  mainDiv.appendChild(locDiv);
+	  textDiv.appendChild(titleDiv);
+	  textDiv.appendChild(priceDiv);
+	  textDiv.appendChild(locDiv);
+	  
 
 	  var titleH4 = document.createElement("h4");
 	  var priceP = document.createElement("P");
@@ -168,10 +185,13 @@ function createListing(listing){
 	  priceDiv.appendChild(priceP);
 	  locDiv.appendChild(locP);
 
+
+
 	  titleH4.innerHTML = listing.val.title;
-	  priceP.innerHTML =  + listing.val.price;
+	  priceP.innerHTML =  "Price: $" + listing.val.price;
 	  locP.innerHTML = "Address: " + listing.val.address;
 	} else {
+		imageDiv.setAttribute("id", "imageBig");
 		var titleDiv = document.createElement("div");
 		var priceDiv = document.createElement("div");
 		var locDiv = document.createElement("div");
@@ -188,6 +208,7 @@ function createListing(listing){
 		var sizeDiv = document.createElement("div");
 
 	  mainDiv.className = "MainDiv"
+	  textDiv.className = "TestDiv"
 	  titleDiv.style.margin = 0;
 	  titleDiv.className = "TitleDiv"
 	  priceDiv.style.margin = 0;
@@ -221,20 +242,20 @@ function createListing(listing){
 	  sizeDiv.style.margin = 0;
 	  sizeDiv.className = "sizeDiv"
 	 
-	  mainDiv.appendChild(titleDiv);
-	  mainDiv.appendChild(priceDiv);
-	  mainDiv.appendChild(locDiv);
-	  mainDiv.appendChild(typeDiv);
-	  mainDiv.appendChild(cityDiv);
-	  mainDiv.appendChild(stateDiv);
-	  mainDiv.appendChild(zipDiv);
-	  mainDiv.appendChild(bedNumDiv);
-	  mainDiv.appendChild(bathNumDiv);
-	  mainDiv.appendChild(hostDiv);
-	  mainDiv.appendChild(utilitiesDiv);
-	  mainDiv.appendChild(petsDiv);
-	  mainDiv.appendChild(smokingDiv);
-	  mainDiv.appendChild(sizeDiv);
+	  textDiv.appendChild(titleDiv);
+	  textDiv.appendChild(priceDiv);
+	  textDiv.appendChild(locDiv);
+	  textDiv.appendChild(typeDiv);
+	  textDiv.appendChild(cityDiv);
+	  textDiv.appendChild(stateDiv);
+	  textDiv.appendChild(zipDiv);
+	  textDiv.appendChild(bedNumDiv);
+	  textDiv.appendChild(bathNumDiv);
+	  textDiv.appendChild(hostDiv);
+	  textDiv.appendChild(utilitiesDiv);
+	  textDiv.appendChild(petsDiv);
+	  textDiv.appendChild(smokingDiv);
+	  textDiv.appendChild(sizeDiv);
 
 	  var titleH4 = document.createElement("h4");
 	  var priceP = document.createElement("P");
@@ -331,14 +352,17 @@ function createListing(listing){
 	  cityP.innerHTML = "City: " + listing.val.city;
 	  stateP.innerHTML = "State: " + listing.val.state;
 	  zipP.innerHTML = "Zip: " + listing.val.zip;
-	  typeP.innerHTML =  listing.val.type;
+	  typeP.innerHTML =  "Type: " + listing.val.type;
 	  bedNumP.innerHTML = "Bedrooms: " + listing.val.bedNum;
 	  bathNumP.innerHTML = "bathrooms: " + listing.val.bathNum;
 	  hostP.innerHTML = "Posted by: " + listing.val.host;
 	  utilitiesP.innerHTML = "Utilities: " + listing.val.utilities;
-	  petsP.innerHTML = "Pets: " + listing.val.pets;
-	  smokingP.innerHTML = "Smoking: " + listing.val.smoking;
-	  sizeP.innerHTML = "Size: " + listing.val.size + "square feet";
+	  var pets, smoking;
+	  if(listing.val.pets) {pets = "pets okay";} else { pets = "no pets";}
+	  if(listing.val.smoking) {smoking = "yes";} else { smoking = "no smoking";}
+	  petsP.innerHTML = "Pets: " + pets;
+	  smokingP.innerHTML = "Smoking: " + smoking;
+	  sizeP.innerHTML = "Size: " + listing.val.size + " square feet";
 
 	}
 	var user = firebase.auth().currentUser;
@@ -349,8 +373,12 @@ function createListing(listing){
 		var deleteButton = document.createElement("button");
 		deleteButton.onclick = function(){removeListing(listing.val.idx)};
   deleteButton.innerHTML = "X";
-  mainDiv.appendChild(deleteButton);
+  deleteButton.setAttribute("id", "delete");
+  imageDiv.appendChild(deleteButton);
+
 	}
+	mainDiv.appendChild(textDiv); 
+	mainDiv.appendChild(imageDiv); 
   document.getElementById('inject').appendChild(mainDiv);
   // document.body.appendChild(mainDiv);
   console.log(mainDiv);

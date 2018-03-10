@@ -45,6 +45,9 @@ class Listing {
     setSize(size) {
         this.size = size;
     }
+    setImage(image) {
+        this.image = image;
+    }
 
     loadFB(object, idx) {
         this.idx = idx;
@@ -62,6 +65,7 @@ class Listing {
         this.pets = object.pets;
         this.smoking = object.smoking;
         this.size = object.size;
+        this.image = object.image;
     }
 
     getHTML() {

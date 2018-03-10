@@ -42,10 +42,6 @@
                     <input id="stateIn" onkeypress="return hitEnter(event)" type="text">
                 <br><input id="zipfilter" onclick="applyFilters()" type="checkbox"> ZIP:
                     <input id="zipIn" onkeypress="return hitEnter(event)" type="text">
-
-                <br><input id="hostfilter" onclick="applyFilters()" type="checkbox"> Host:
-                    <input id="hostIn" onkeypress="return hitEnter(event)" type="text">
-
                 <br><input id="typefilter" onclick="applyFilters()" type="checkbox"> Type:
                 <select id="typeIn" onchange="applyFilters()">
                     <option value="Apartment">Apartment</option>
@@ -70,6 +66,8 @@
 
                 <br><input id="petsfilter" onclick="applyFilters()" type="checkbox"> Pets Allowed
                 <br><input id="smokingfilter" onclick="applyFilters()" type="checkbox"> Smoking Allowed
+                <br><br>
+                <input type="checkbox" id="myListings" onclick="applyFilters()"> My Listings
             </div>
 
         </div>

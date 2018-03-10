@@ -18,9 +18,40 @@ h1 {
 	border-radius: 0px;
 	margin: 10px;
 	font-family: arial;
+  font-size: 15px;
 	width: 90%;
 	border: 0px;
 	text-align: left;
+  display: flex;
+}
+
+#text {
+  display:inline;
+  width:50%;
+}
+
+#imageBig {
+  background-size:100% 100%;
+  width: 450px;
+  height: 250px;
+}
+
+#imageSmall {
+  background-position: center;
+  background-size:100% 250px;
+  width: 450px;
+  height: 70px;
+}
+
+#delete {
+  background-color: #3CBC8D;
+  color: white;
+  display: block;
+  border: 0px;
+  border-radius: 2px;
+  float: right;
+  margin-right: 0;
+  width:80px;
 }
 
 .container {

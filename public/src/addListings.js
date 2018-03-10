@@ -20,7 +20,7 @@ function addListing() {
     let city = document.getElementById("city").value;
     let state = document.getElementById("state").value;
     let zip = document.getElementById("zip").value;
-    let host = document.getElementById("host").value;
+    let image = document.getElementById("image").value;
     let utilities = document.getElementById("utilities").value;
     let bedNum = ~~document.getElementById("bedNum").value;
     let bathNum = ~~document.getElementById("bathNum").value;
@@ -40,6 +40,7 @@ function addListing() {
     listing.setPets(pets);
     listing.setSmoking(smoking);
     listing.setSize(size);
+    listing.setImage(image);
 
     ref.push(listing);
 }
