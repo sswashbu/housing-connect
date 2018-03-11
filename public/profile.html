@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app>
+    <head>
+        <meta charset = "UTF-8">
+        <title>Housing Connect</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel = "stylesheet" type = "text/css" href = "CSS/main.css">
+        <script src = "https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+		  <script src = "src/checkLoggedIn.js"></script>
+        <script src = "src/init.js"></script>
+    </head>
+    <body>
+        <div class="topnav">
+            <a href="index.html">Listings</a>
+			<a class="active" href="profile.html">Profile</a>
+            <a href="CreateListing.html">Create Listing</a>
+			<p id="logo"> HOUSING CONNECT</p>
+        </div>
+        <div class="container">
+            <div class="left-bar">
+                <h2></h2>
+            </div>
+            <div class="main">
+                 <h3 id="name"></h3>
+            <div id="profile">
+               
+                <table>
+                    <tr>
+                        <td>
+                Name: <input id="nameTxt" cols="25" style ="color: white; background-color:#3CBC8D; border: none;"></input>
+                <h3>Contact info</h3>
+                Phone: <input id="phone" cols="15" style="color: white;background-color:#3CBC8D; border: none;"></input>
+                <p></p>
+               Email:  <input  id="email" cols="25" style ="color: white;background-color:#3CBC8D; border: none;"></input>
+            </td><td>
+                <h3>About Me:</h3>
+                <textarea  id="about"  style="color: white;height:90px; width: 380px ;resize: none; background-color:#3CBC8D; border: none;"></textarea><br>
+                
+            </td></tr></table>
+            </div><input id="saveBtn" type="button" value="Save Changes"></input></div>
+        </div>
+        <script src="src/profile.js"></script>
+    </body>
+</html>

@@ -53,23 +53,20 @@
         <a class="nav-link" href="Listings.html">Listings</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="ContactUs.html">Contact Us</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="CreateListing.html">Create Listing</a>
       </li>
     </ul>
   </div>
   <ul class="navbar-nav px-2">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#"><i data-feather="user"></i> Your Account</a>
+      <a class="nav-link" href="profile.html"><i data-feather="user"></i> Your Account</a>
     </li>
   </ul>
-  <ul class="navbar-nav px-2">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#"><i data-feather="shopping-cart"></i> Saved Listings</a>
-    </li>
-  </ul>
+  <!--<ul class="navbar-nav px-2">-->
+    <!--<li class="nav-item text-nowrap">-->
+      <!--<a class="nav-link" href="#"><i data-feather="shopping-cart"></i> Saved Listings</a>-->
+    <!--</li>-->
+  <!--</ul>-->
 </nav>
 
 <div class="container-fluid">
@@ -181,59 +178,23 @@
                 <label>Smoking Allowed</label>
               </div>
             </a>
+            <br>
+            <a class="nav-link side-link">
+              <div class="col-md-12 padding-0 vcenter">
+                <input class="checkbox" id="myListings" onclick="applyFilters()" type="checkbox">
+                <label>My Listings</label>
+              </div>
+            </a>
           </li>
         </ul>
       </div>
     </nav>
 
     <main role="main" class="col-md-9 pt-3 px-4">
-      <!--CAROUSEL-->
-      <div id="demo" class="carousel slide" data-ride="carousel">
-        <ul class="carousel-indicators">
-          <li data-target="#demo" data-slide-to="0" class="active"></li>
-          <li data-target="#demo" data-slide-to="1"></li>
-          <li data-target="#demo" data-slide-to="2"></li>
-        </ul>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row justify-content-center">
-              <img class="carousel-bounds" src="https://childrensharbor.com/img/xtour-bay-house-front.jpg.pagespeed.ic.t9T3dEomuT.jpg" alt="house1">
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row justify-content-center">
-              <img class="carousel-bounds" src="https://cdn.houseplans.com/product/o2d2ui14afb1sov3cnslpummre/w1024.jpg?v=15" alt="house2">
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row justify-content-center">
-              <img class="carousel-bounds" src="https://www.marriedwithmoney.com/wp-content/uploads/2017/06/house.jpeg" alt="house3">
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </a>
-      </div>
-
       <!--LISTINGS ALBUM-->
       <div class="album py-5">
-        <div class="container" id="inject" >
-
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1621398d870%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1621398d870%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.828125%22%20y%3D%22118.7390625%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
+        <div class="container">
+          <div class="row" id="inject"></div>
         </div>
       </div>
     </main>

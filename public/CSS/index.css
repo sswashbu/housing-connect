@@ -10,11 +10,27 @@ label {
     margin-bottom: .2rem;
 }
 
+.x-button {
+    position: absolute;
+    z-index: 100;
+    margin: 3px 3px;
+}
+
 .carousel-bounds {
     display: block;
-    height:400px;
-    width:1000px;
+    height: 400px;
+    width: 1000px;
     object-fit: cover;
+}
+
+.img-fit {
+    object-fit: cover;
+}
+
+.gallery-img {
+    height: 225px;
+    width: 100%;
+    display: block;
 }
 
 .side-link {
@@ -127,5 +143,10 @@ footer {
  * Utilities
  */
 
-.border-top { border-top: 1px solid #e5e5e5; }
-.border-bottom { border-bottom: 1px solid #e5e5e5; }
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
