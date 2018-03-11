@@ -56,6 +56,7 @@ function login() {
  *  - redirect to site page
  */
 function signUp() {
+	
     const email = document.getElementById('sEmail').value;
     const pass = document.getElementById('sPassword').value;
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);

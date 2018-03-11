@@ -10,8 +10,10 @@ function addListing() {
     let ref = firebaseApp.database().ref('listing');
 
     var user = firebase.auth().currentUser;
-    var email;
+    var uid;
+	var email;
     if (user != null) {
+  uid = user.uid;
   email = user.email;}
 
     let title = document.getElementById("title").value;
@@ -30,10 +32,12 @@ function addListing() {
     let smoking = document.getElementById("smoking").checked;
 
     let listing = new Listing();
+
     listing.setTitle(title);
     listing.setType(type);
     listing.setAddress(address, city, state, zip);
-    listing.setRenterName(email);
+    listing.setRenterEmail(email);
+	listing.setRenterName(uid);
     listing.setPrice(price);
     listing.setUtilities(utilities);
     listing.setBedBath(bedNum, bathNum);
@@ -41,6 +45,6 @@ function addListing() {
     listing.setSmoking(smoking);
     listing.setSize(size);
     listing.setImage(image);
-
+	
     ref.push(listing);
 }

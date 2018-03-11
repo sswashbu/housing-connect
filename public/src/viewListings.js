@@ -75,12 +75,12 @@ function applyFilters() {
   let bedNum = ~~document.getElementById("bedIn").value;
 
   var user = firebase.auth().currentUser;
-    var email;
+    var uid;
     if (user != null) {
-  		email = user.email;}
+  		uid = user.uid;}
 
   let myListings = document.getElementById("myListings").checked; 
-  if(myListings) filterHost(email);
+  if(myListings) filterHost(uid);
 
 
   if(priceOn && (minPrice || maxPrice))
@@ -355,7 +355,7 @@ function createListing(listing){
 	  typeP.innerHTML =  "Type: " + listing.val.type;
 	  bedNumP.innerHTML = "Bedrooms: " + listing.val.bedNum;
 	  bathNumP.innerHTML = "bathrooms: " + listing.val.bathNum;
-	  hostP.innerHTML = "Posted by: " + listing.val.host;
+	  hostP.innerHTML = "Posted by: " + listing.val.email;
 	  utilitiesP.innerHTML = "Utilities: " + listing.val.utilities;
 	  var pets, smoking;
 	  if(listing.val.pets) {pets = "pets okay";} else { pets = "no pets";}
@@ -366,10 +366,10 @@ function createListing(listing){
 
 	}
 	var user = firebase.auth().currentUser;
-    var email;
+    var uid;
     if (user != null) {
-  		email = user.email;}
-	if(listing.val.host == email){
+  		uid = user.uid;}
+	if(listing.val.host == uid){
 		var deleteButton = document.createElement("button");
 		deleteButton.onclick = function(){removeListing(listing.val.idx)};
   deleteButton.innerHTML = "X";

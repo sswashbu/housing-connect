@@ -27,9 +27,6 @@ class Listing {
         this.state = state;
         this.zip = zip;
     }
-    setRenterName(name) {
-        this.host = name;
-    }
     setPrice(price) {
         this.price = price;
     }
@@ -48,6 +45,12 @@ class Listing {
     setImage(image) {
         this.image = image;
     }
+	setRenterEmail(email){
+		this.email = email;
+	}
+	setRenterName(host){
+		this.host = host;
+	}
 
     loadFB(object, idx) {
         this.idx = idx;
@@ -59,13 +62,14 @@ class Listing {
         this.zip = object.zip;
         this.bedNum = object.bedNum;
         this.bathNum = object.bathNum;
-        this.host = object.host;
         this.price = object.price;
         this.utilities = object.utilities;
         this.pets = object.pets;
         this.smoking = object.smoking;
         this.size = object.size;
         this.image = object.image;
+		this.email = object.email;
+		this.host = object.host;
     }
 
     getHTML() {
