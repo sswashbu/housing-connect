@@ -5,6 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Housing Connect</title>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -23,213 +24,12 @@
     }
   </style>
 
-  <title>Hello, world!</title>
+  <script src = "https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script src = "src/init.js"></script>
+  <script src = "src/checkLoggedIn.js"></script>
+  <script src = "src/viewListings.js"></script>
+  <script src = "src/classes/Listing.js"></script>
 </head>
-
-<!--<body>-->
-
-<!--<div class="jumbotron">-->
-  <!--<div class="container text-center">-->
-    <!--<h1>Housing Connect</h1>-->
-    <!--<p>Find and live in the place you love!</p>-->
-  <!--</div>-->
-<!--</div>-->
-
-<!--<nav class="navbar navbar-inverse">-->
-  <!--<div class="container-fluid">-->
-    <!--<div class="navbar-header">-->
-      <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">-->
-        <!--<span class="icon-bar"></span>-->
-        <!--<span class="icon-bar"></span>-->
-        <!--<span class="icon-bar"></span>-->
-      <!--</button>-->
-      <!--<a class="navbar-brand" href="#">Logo</a>-->
-    <!--</div>-->
-    <!--<div class="collapse navbar-collapse" id="myNavbar">-->
-      <!--<ul class="nav navbar-nav">-->
-        <!--<li class="active"><a href="index.html">Home</a></li>-->
-        <!--<li><a href="Listings.html">Listings</a></li>-->
-        <!--<li><a href="ContactUs.html">Contact Us</a></li>-->
-        <!--<li><a href="CreateListing.html">Create Listing</a></li>-->
-      <!--</ul>-->
-      <!--<ul class="nav navbar-nav navbar-right">-->
-        <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>-->
-        <!--<li><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Saved Listings</a></li>-->
-      <!--</ul>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</nav>-->
-
-<!--<div class="container-fluid">-->
-  <!--<div class="row content">-->
-    <!--<div class="col-sm-3 sidenav">-->
-      <!--<h4><label>Filter By:</label></h4>-->
-      <!--<ul class="nav nav-pills nav-stacked">-->
-        <!--<div class="search-settings form-group form-group-sm">-->
-
-          <!--<div class="col-sm-3 padding-0 vcenter">-->
-            <!--<input class="form-check-input align-middle" id="pricefilter" onclick="applyFilters()" type="checkbox">-->
-            <!--<label>Price:</label>-->
-          <!--</div><div class="col-sm-9 padding-0">-->
-          <!--<input class="form-control" id="minPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Min">-->
-          <!--<input class="form-control" id="maxPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Max">-->
-        <!--</div>-->
-
-          <!--<div class="col-sm-3 padding-0 vcenter">-->
-            <!--<input class="form-check-input" id="sizefilter" onclick="applyFilters()" type="checkbox">-->
-            <!--<label>Size:</label>-->
-          <!--</div><div class="col-sm-9 padding-0">-->
-          <!--<input class="form-control" id="minSize" onkeypress="return hitEnter(event)" type="number" placeholder="Min">-->
-          <!--<input class="form-control" id="maxSize" onkeypress="return hitEnter(event)" type="number" placeholder="Max">-->
-        <!--</div>-->
-
-          <!--<div class="col-sm-3 padding-0 vcenter">-->
-            <!--<input class="form-check-input" id="cityfilter" onclick="applyFilters()" type="checkbox">-->
-            <!--<label>City:</label>-->
-          <!--</div><div class="col-sm-9 padding-0">-->
-          <!--<input class="form-control" id="cityIn" onkeypress="return hitEnter(event)" type="text">-->
-        <!--</div>-->
-
-          <!--<div class="col-sm-3 padding-0 vcenter">-->
-            <!--<input class="form-check-input" id="statefilter" onclick="applyFilters()" type="checkbox">-->
-            <!--<label>State:</label>-->
-          <!--</div><div class="col-sm-9 padding-0">-->
-          <!--<input class="form-control" id="stateIn" onkeypress="return hitEnter(event)" type="text">-->
-        <!--</div>-->
-
-          <!--<div class="col-sm-3 padding-0 vcenter">-->
-            <!--<input class="form-check-input" id="zipfilter" onclick="applyFilters()" type="checkbox">-->
-            <!--<label>ZIP:</label>-->
-          <!--</div><div class="col-sm-9 padding-0">-->
-          <!--<input class="form-control" id="zipIn" onkeypress="return hitEnter(event)" type="text">-->
-        <!--</div>-->
-
-          <!--<div class="col-sm-3 padding-0 vcenter">-->
-            <!--<input class="form-check-input" id="hostfilter" onclick="applyFilters()" type="checkbox">-->
-            <!--<label>Host:</label>-->
-          <!--</div><div class="col-sm-9 padding-0">-->
-          <!--<input class="form-control" id="hostIn" onkeypress="return hitEnter(event)" type="text">-->
-        <!--</div>-->
-
-          <!--<div class="col-sm-3 padding-0 vcenter">-->
-            <!--<input class="form-check-input" id="typefilter" onclick="applyFilters()" type="checkbox">-->
-            <!--<label>Type:</label>-->
-          <!--</div><div class="col-sm-9 padding-0">-->
-          <!--<select class="form-control" id="typeIn" onchange="applyFilters()">-->
-            <!--<option value="Apartment">Apartment</option>-->
-            <!--<option value="House">House</option>-->
-            <!--<option value="Condo">Condo</option>-->
-            <!--<option value="Studio">Studio</option>-->
-            <!--<option value="Room">Room</option>-->
-          <!--</select>-->
-        <!--</div>-->
-
-
-          <!--<div class="col-sm-3 padding-0 vcenter">-->
-            <!--<input class="form-check-input" id="bedfilter" onclick="applyFilters()" type="checkbox">-->
-            <!--<label>Beds:</label>-->
-          <!--</div><div class="col-sm-9 padding-0">-->
-          <!--<select class="form-control" id="bedIn" onchange="applyFilters()">-->
-            <!--<option value="1">1 Bed</option>-->
-            <!--<option value="2">2 Beds</option>-->
-            <!--<option value="3">3 Beds</option>-->
-            <!--<option value="4">4+ Beds</option>-->
-          <!--</select>-->
-        <!--</div>-->
-
-          <!--<div class="col-sm-3 padding-0 vcenter">-->
-            <!--<input class="form-check-input" id="bathfilter" onclick="applyFilters()" type="checkbox">-->
-            <!--<label>Baths:</label>-->
-          <!--</div><div class="col-sm-9 padding-0">-->
-          <!--<select class="form-control" id="bathIn" onchange="applyFilters()">-->
-            <!--<option value="1">1 Bath</option>-->
-            <!--<option value="2">2 Baths</option>-->
-            <!--<option value="3">3+ Baths</option>-->
-          <!--</select>-->
-        <!--</div>-->
-
-          <!--<div class="col-sm-12 padding-0 vcenter" style="margin-top: 5px">-->
-            <!--<input class="form-check-input" id="petsfilter" onclick="applyFilters()" type="checkbox">-->
-            <!--<label style="margin-bottom:0px">Pets Allowed</label>-->
-          <!--</div>-->
-
-          <!--<div class="col-sm-12 padding-0 vcenter">-->
-            <!--<input class="form-check-input" id="smokingfilter" onclick="applyFilters()" type="checkbox">-->
-            <!--<label style="margin-bottom:0px">Smoking Allowed</label>-->
-          <!--</div>-->
-
-        <!--</div>-->
-      <!--</ul><br>-->
-      <!--<div class="input-group">-->
-        <!--<input type="text" class="form-control" placeholder="Search...">-->
-        <!--<span class="input-group-btn">-->
-				<!--<button class="btn btn-default" type="button">-->
-				<!--<span class="glyphicon glyphicon-search"></span>-->
-				<!--</button>-->
-			<!--</span>-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--<div class="col-sm-9">-->
-      <!--<div class="row">-->
-        <!--<div class="col-sm-4">-->
-          <!--<div class="panel panel-info">-->
-            <!--<div class="panel-heading">HOUSE #1</div>-->
-            <!--<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>-->
-            <!--<div class="panel-footer">Description #1</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-sm-4">-->
-          <!--<div class="panel panel-danger">-->
-            <!--<div class="panel-heading">HOUSE #2</div>-->
-            <!--<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>-->
-            <!--<div class="panel-footer">Description #2</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-sm-4">-->
-          <!--<div class="panel panel-success">-->
-            <!--<div class="panel-heading">HOUSE #3</div>-->
-            <!--<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>-->
-            <!--<div class="panel-footer">Description #3</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<br>-->
-
-      <!--<div class="row">-->
-        <!--<div class="col-sm-4">-->
-          <!--<div class="panel panel-info">-->
-            <!--<div class="panel-heading">HOUSE #4</div>-->
-            <!--<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>-->
-            <!--<div class="panel-footer">Description #4</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-sm-4">-->
-          <!--<div class="panel panel-info">-->
-            <!--<div class="panel-heading">HOUSE #5</div>-->
-            <!--<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>-->
-            <!--<div class="panel-footer">Description #5</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-sm-4">-->
-          <!--<div class="panel panel-info">-->
-            <!--<div class="panel-heading">HOUSE #6</div>-->
-            <!--<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>-->
-            <!--<div class="panel-footer">Description #6</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-<!--<br><br>-->
-
-<!--<footer class="container-fluid text-center">-->
-  <!--<p>FOOTER</p>-->
-<!--</footer>-->
-
-
-
-<!--</body>-->
 
 <body>
 
@@ -243,20 +43,20 @@
 
 <!--TOP MENU NAV-->
 <nav class="navbar navbar-dark navbar-expand-md sticky-top bg-dark flex-md-nowrap p-0">
-  <a class="navbar-brand col-sm-3 col-md-3 mr-0" href="#"> <i data-feather="home"></i> Housing Connect</a>
+  <a class="navbar-brand col-sm-3 col-md-3 mr-0" href="index.html"> <i data-feather="home"></i> Housing Connect</a>
   <div class="form-control form-control-dark w-100">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Listings</a>
+        <a class="nav-link" href="Listings.html">Listings</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact Us</a>
+        <a class="nav-link" href="ContactUs.html">Contact Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Create Listing</a>
+        <a class="nav-link" href="CreateListing.html">Create Listing</a>
       </li>
     </ul>
   </div>
@@ -279,11 +79,6 @@
     <nav class="col-md-3 d-none d-md-block bg-light sidebar">
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
-          <!--<li class="nav-item">-->
-            <!--<a class="nav-link sidelink">-->
-              <!--<h5><label>Filter By:</label></h5>-->
-            <!--</a>-->
-          <!--</li>-->
           <li class="nav-item">
             <a class="nav-link side-link">
               <div class="col-lg-3 col-md-4 padding-0 vcenter">
@@ -426,7 +221,7 @@
 
       <!--LISTINGS ALBUM-->
       <div class="album py-5">
-        <div class="container">
+        <div class="container" id="inject" >
 
           <div class="row">
             <div class="col-md-4">
@@ -437,80 +232,16 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1621398d871%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1621398d871%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.828125%22%20y%3D%22118.7390625%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1621398d872%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1621398d872%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.828125%22%20y%3D%22118.7390625%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1621398d873%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1621398d873%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.828125%22%20y%3D%22118.7390625%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1621398d874%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1621398d874%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.828125%22%20y%3D%22118.7390625%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1621398d876%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1621398d876%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.828125%22%20y%3D%22118.7390625%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1621398d878%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1621398d878%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.828125%22%20y%3D%22118.7390625%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1621398d879%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1621398d879%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.828125%22%20y%3D%22118.7390625%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1621398d87b%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1621398d87b%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.828125%22%20y%3D%22118.7390625%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-
           </div>
+
         </div>
       </div>
     </main>
 
   </div>
 </div>
+
+<!--<script src = "src/recentHistory.js"></script>-->
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
