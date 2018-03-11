@@ -125,7 +125,6 @@ function renderHTML() {
             ul.appendChild(document.createElement("BR"));
 
             createListing(listings[i]);
-
         }
     }
 }
@@ -187,7 +186,7 @@ function createListing(listing) {
         let locP = document.createElement("P");
 
         titleH4.style.margin = 0;
-        titleH4.className = "TitleH4"
+        titleH4.className = "mb-2"
         titleH4.style.display = "block"
 
         priceP.style.margin = 0;
@@ -219,7 +218,7 @@ function createListing(listing) {
             };
             deleteButton.innerHTML = "X";
             deleteButton.setAttribute("id", "delete");
-            deleteButton.className = "x-button btn btn-sm btn-outline-danger";
+            deleteButton.className = "x-button btn btn-sm btn-outline-danger badge badge-pill";
 
             imageDiv.appendChild(deleteButton);
 
@@ -415,14 +414,14 @@ function createListing(listing) {
         if (user != null) {
             uid = user.uid;
         }
-        if (listing.val.host == uid) {
+        if (listing.val.host === uid) {
             let deleteButton = document.createElement("button");
             deleteButton.onclick = function () {
                 removeListing(listing.val.idx)
             };
             deleteButton.innerHTML = "X";
             deleteButton.setAttribute("id", "delete");
-            deleteButton.className = "x-button btn btn-sm btn-outline-danger";
+            deleteButton.className = "x-button btn btn-sm btn-outline-danger badge badge-pill";
 
             imageDiv.appendChild(deleteButton);
 

@@ -1,10 +1,164 @@
-<!DOCTYPE html>
-<html ng-app>
+<!--<!DOCTYPE html>-->
+<!--<html ng-app>-->
+<!--<head>-->
+  <!--<meta charset = "UTF-8">-->
+  <!--<title>Housing Connect</title>-->
+  <!--<meta name="viewport" content="width=device-width,initial-scale=1">-->
+  <!--<link rel = "stylesheet" type = "text/css" href = "CSS/main.css">-->
+  <!--<script src = "https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>-->
+  <!--<script src = "src/init.js"></script>-->
+  <!--<script src = "src/checkLoggedIn.js"></script>-->
+  <!--<script src = "src/classes/Listing.js"></script>-->
+  <!--<script src = "src/addListings.js"></script>-->
+<!--</head>-->
+
+<!--<body>-->
+  <!--<div class="topnav">-->
+     <!--<a  href="index.html">Listings</a>-->
+     <!--<a href="profile.html">Profile</a>-->
+    <!--<a class="active" href="CreateListing.html">Create Listing</a>-->
+	<!--<p id="logo"> HOUSING CONNECT</p>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--<div class="container">-->
+      <!--<div class="left-bar">-->
+
+      <!--</div>-->
+
+    <!--<div class="main">-->
+
+	<!--<div id="addListingInput">-->
+    <!--<table style="width:600px">-->
+        <!--<tr>-->
+            <!--<td>-->
+                <!--<div style="position:absolute;">Title:</div>-->
+                <!--<input id="title" style="margin-left: 70px" type="text">-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<div style="position:absolute;">Type:</div>-->
+                <!--<select id="type" style="margin-left: 70px; width: 173px; height:21px;">-->
+                    <!--<option value="Apartment">Apartment</option>-->
+                    <!--<option value="House">House</option>-->
+                    <!--<option value="Condo">Condo</option>-->
+                    <!--<option value="Studio">Studio</option>-->
+                    <!--<option value="Room">Room</option>-->
+                <!--</select>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>-->
+                <!--<div style="position:absolute;">Address:</div>-->
+                <!--<input id="address" style="margin-left: 70px" type="text">-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<div style="position:absolute;">City:</div>-->
+                <!--<input id="city" style="margin-left: 70px" type="text">-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>-->
+                <!--<div style="position:absolute;">State:</div>-->
+                <!--<input id="state" style="margin-left: 70px" type="text">-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<div style="position:absolute;">ZIP:</div>-->
+                <!--<input id="zip" style="margin-left: 70px" type="text">-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>-->
+                <!--<div style="position:absolute;">Image url:</div>-->
+                <!--<input id="image" style="margin-left: 70px" type="text">-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<div style="position:absolute;">Utilities:</div>-->
+                <!--<input id="utilities" style="margin-left: 70px" type="text">-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>-->
+                <!--<div style="position:absolute;"># Beds:</div>-->
+                <!--<input id="bedNum" style="margin-left: 70px" type="number">-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<div style="position:absolute;"># Baths:</div>-->
+                <!--<input id="bathNum" style="margin-left: 70px" type="number">-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>-->
+                <!--<div style="position:absolute;">Price:</div>-->
+                <!--<input id="price" style="margin-left: 70px" type="number">-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<div style="position:absolute;">Size (sqr ft):</div>-->
+                <!--<input id="size" style="margin-left: 70px" type="number">-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>-->
+                <!--<div style="position:absolute;">Pets:</div>-->
+                <!--<input id="pets" style="margin-left: 70px" type="radio" name="yn1" value="Yes">Yes-->
+                <!--<input style="margin-left: 10px" type="radio" name="yn1" value="No" checked>No-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<div style="position:absolute;">Smoking:</div>-->
+                <!--<input id="smoking" style="margin-left: 70px" type="radio" name="yn2" value="Yes">Yes-->
+                <!--<input style="margin-left: 10px" type="radio" name="yn2" value="No" checked>No-->
+            <!--</td>-->
+        <!--</tr>-->
+    <!--</table>-->
+
+    <!--<button type="button" id= "add" onclick="addListing()" style="margin-top: 5px">Add Listing</button>-->
+
+
+      <!--&lt;!&ndash; <hr/>-->
+      <!--<h2>Enter the residence info</h2>-->
+
+      <!--<label>Address:</label>-->
+      <!--<input type = "text" ng-model = "Address" placeholder = "Enter an address here" required>-->
+
+      <!--<br/>-->
+      <!--<label>Contact Number:</label>-->
+      <!--<input type = "number" ng-model = "contactPhone" placeholder = "(xxx)-xxx-xxxx">-->
+
+      <!--<br/>-->
+      <!--<label>Contact Email:</label>-->
+      <!--<input type = "email" ng-model = "contactEmail" placeholder = "JohnDoe@email.com" required>-->
+
+      <!--<br/>-->
+      <!--<label>Description of residence:</label>-->
+
+      <!--<br/>-->
+      <!--<textarea name="bio" ng-model="yourBio" cols="40" rows="20" placeholder = "Enter a description" required></textarea>-->
+         <!--<hr/>-->
+      <!--<h3>Address {{Address}}!</h1>-->
+      <!--<p>Phone: {{contactPhone}}</p>-->
+      <!--<p>Email: {{contactEmail}}</p>-->
+      <!--<hr/>-->
+      <!--<p>The Residence description ix:&#13;&#10;{{yourBio}}</p> &ndash;&gt;-->
+	<!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--</body>-->
+<!--</html>-->
+
+
+<!doctype html>
+<html lang="en">
+
 <head>
-  <meta charset = "UTF-8">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Housing Connect</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel = "stylesheet" type = "text/css" href = "CSS/main.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="CSS/index.css">
+
   <script src = "https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
   <script src = "src/init.js"></script>
   <script src = "src/checkLoggedIn.js"></script>
@@ -13,133 +167,163 @@
 </head>
 
 <body>
-  <div class="topnav">
-     <a  href="index.html">Listings</a>
-     <a href="profile.html">Profile</a>
-    <a class="active" href="CreateListing.html">Create Listing</a>
-	<p id="logo"> HOUSING CONNECT</p>
-    </div>
+
+<!--JUMBOTRON-->
+<div class="jumbotron sticky">
+  <div class="container text-center">
+    <h1>Housing Connect</h1>
+    <p>Find and live in the place you love!</p>
   </div>
+</div>
 
-  <div class="container">
-      <div class="left-bar">
+<!--TOP MENU NAV-->
+<nav class="navbar navbar-dark navbar-expand-md sticky-top bg-dark flex-md-nowrap p-0">
+  <a class="navbar-brand col-sm-3 col-md-3 mr-0" href="index.html"> <i data-feather="home"></i> Housing Connect</a>
+  <div class="form-control form-control-dark w-100">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Listings.html">Listings</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="CreateListing.html">Create Listing<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+  <ul class="navbar-nav px-2">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="profile.html"><i data-feather="user"></i> Your Account</a>
+    </li>
+  </ul>
+  <!--<ul class="navbar-nav px-2">-->
+  <!--<li class="nav-item text-nowrap">-->
+  <!--<a class="nav-link" href="#"><i data-feather="shopping-cart"></i> Saved Listings</a>-->
+  <!--</li>-->
+  <!--</ul>-->
+</nav>
 
+<div class="container" style="margin-top: 10px;">
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Preview:</span>
+      </h4>
+    </div>
+
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3">Create a Listing:</h4>
+      <div class="needs-validation" novalidate>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="" value="" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="type">Type</label>
+            <select class="form-control" id="type">
+              <option value="Apartment">Apartment</option>
+              <option value="House">House</option>
+              <option value="Condo">Condo</option>
+              <option value="Studio">Studio</option>
+              <option value="Room">Room</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" placeholder="" value="" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-5 mb-3">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city" placeholder="" value="" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="state">State</label>
+            <input type="text" class="form-control" id="state" placeholder="" value="" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="zip">ZIP</label>
+            <input type="text" class="form-control" id="zip" placeholder="" value="" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="utilities">Utilities</label>
+            <input type="text" class="form-control" id="utilities" placeholder="" value="" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="bedNum"># Beds</label>
+            <input type="number" class="form-control" id="bedNum" placeholder="" value="" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="bathNum"># Baths</label>
+            <input type="number" class="form-control" id="bathNum" placeholder="" value="" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="image">Image URL</label>
+            <input type="text" class="form-control" id="image" placeholder="" value="" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" placeholder="" value="" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="size">Size</label>
+            <input type="number" class="form-control" id="size" placeholder="" value="" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <input class="checkbox" id="smoking" type="checkbox">
+            <label for="smoking">Smoking</label>
+          </div>
+          <div class="col-md-3 mb-3">
+            <input class="checkbox" id="pets" type="checkbox">
+            <label for="pets">Pets</label>
+          </div>
+        </div>
+
+        <button onclick="addListing()" class="btn btn-primary btn-lg btn-block mb-5">Save Listing</button>
       </div>
-
-    <div class="main">
-
-	<div id="addListingInput">
-    <table style="width:600px">
-        <tr>
-            <td>
-                <div style="position:absolute;">Title:</div>
-                <input id="title" style="margin-left: 70px" type="text">
-            </td>
-            <td>
-                <div style="position:absolute;">Type:</div>
-                <select id="type" style="margin-left: 70px; width: 173px; height:21px;">
-                    <option value="Apartment">Apartment</option>
-                    <option value="House">House</option>
-                    <option value="Condo">Condo</option>
-                    <option value="Studio">Studio</option>
-                    <option value="Room">Room</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div style="position:absolute;">Address:</div>
-                <input id="address" style="margin-left: 70px" type="text">
-            </td>
-            <td>
-                <div style="position:absolute;">City:</div>
-                <input id="city" style="margin-left: 70px" type="text">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div style="position:absolute;">State:</div>
-                <input id="state" style="margin-left: 70px" type="text">
-            </td>
-            <td>
-                <div style="position:absolute;">ZIP:</div>
-                <input id="zip" style="margin-left: 70px" type="text">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div style="position:absolute;">Image url:</div>
-                <input id="image" style="margin-left: 70px" type="text">
-            </td>
-            <td>
-                <div style="position:absolute;">Utilities:</div>
-                <input id="utilities" style="margin-left: 70px" type="text">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div style="position:absolute;"># Beds:</div>
-                <input id="bedNum" style="margin-left: 70px" type="number">
-            </td>
-            <td>
-                <div style="position:absolute;"># Baths:</div>
-                <input id="bathNum" style="margin-left: 70px" type="number">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div style="position:absolute;">Price:</div>
-                <input id="price" style="margin-left: 70px" type="number">
-            </td>
-            <td>
-                <div style="position:absolute;">Size (sqr ft):</div>
-                <input id="size" style="margin-left: 70px" type="number">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div style="position:absolute;">Pets:</div>
-                <input id="pets" style="margin-left: 70px" type="radio" name="yn1" value="Yes">Yes
-                <input style="margin-left: 10px" type="radio" name="yn1" value="No" checked>No
-            </td>
-            <td>
-                <div style="position:absolute;">Smoking:</div>
-                <input id="smoking" style="margin-left: 70px" type="radio" name="yn2" value="Yes">Yes
-                <input style="margin-left: 10px" type="radio" name="yn2" value="No" checked>No
-            </td>
-        </tr>
-    </table>
-
-    <button type="button" id= "add" onclick="addListing()" style="margin-top: 5px">Add Listing</button>
-
-
-      <!-- <hr/>
-      <h2>Enter the residence info</h2>
-
-      <label>Address:</label>
-      <input type = "text" ng-model = "Address" placeholder = "Enter an address here" required>
-
-      <br/>
-      <label>Contact Number:</label>
-      <input type = "number" ng-model = "contactPhone" placeholder = "(xxx)-xxx-xxxx">
-
-      <br/>
-      <label>Contact Email:</label>
-      <input type = "email" ng-model = "contactEmail" placeholder = "JohnDoe@email.com" required>
-
-      <br/>
-      <label>Description of residence:</label>
-
-      <br/>
-      <textarea name="bio" ng-model="yourBio" cols="40" rows="20" placeholder = "Enter a description" required></textarea>
-         <hr/>
-      <h3>Address {{Address}}!</h1>
-      <p>Phone: {{contactPhone}}</p>
-      <p>Email: {{contactEmail}}</p>
-      <hr/>
-      <p>The Residence description ix:&#13;&#10;{{yourBio}}</p> -->
-	</div>
     </div>
   </div>
-  </body>
+</div>
+
+<script src = "src/recentHistory.js"></script>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script> feather.replace() </script>
+</body>
+
 </html>
+
