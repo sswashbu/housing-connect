@@ -1,90 +1,500 @@
-<!DOCTYPE html>
-<html ng-app>
+<!doctype html>
+<html lang="en">
+
 <head>
-  <meta charset = "UTF-8">
-  <title>Housing Connect</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel = "stylesheet" type = "text/css" href = "CSS/main.css">
-  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
-  <script src = "https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-  <script src = "src/init.js"></script>
-  <script src = "src/checkLoggedIn.js"></script>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="CSS/index.css">
+
+  <style>
+    .vcenter {
+      display: flex;
+      align-items: center;
+    }
+
+    .padding-0 {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  </style>
+
+  <title>Hello, world!</title>
 </head>
+
+<!--<body>-->
+
+<!--<div class="jumbotron">-->
+  <!--<div class="container text-center">-->
+    <!--<h1>Housing Connect</h1>-->
+    <!--<p>Find and live in the place you love!</p>-->
+  <!--</div>-->
+<!--</div>-->
+
+<!--<nav class="navbar navbar-inverse">-->
+  <!--<div class="container-fluid">-->
+    <!--<div class="navbar-header">-->
+      <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">-->
+        <!--<span class="icon-bar"></span>-->
+        <!--<span class="icon-bar"></span>-->
+        <!--<span class="icon-bar"></span>-->
+      <!--</button>-->
+      <!--<a class="navbar-brand" href="#">Logo</a>-->
+    <!--</div>-->
+    <!--<div class="collapse navbar-collapse" id="myNavbar">-->
+      <!--<ul class="nav navbar-nav">-->
+        <!--<li class="active"><a href="index.html">Home</a></li>-->
+        <!--<li><a href="Listings.html">Listings</a></li>-->
+        <!--<li><a href="ContactUs.html">Contact Us</a></li>-->
+        <!--<li><a href="CreateListing.html">Create Listing</a></li>-->
+      <!--</ul>-->
+      <!--<ul class="nav navbar-nav navbar-right">-->
+        <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>-->
+        <!--<li><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Saved Listings</a></li>-->
+      <!--</ul>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</nav>-->
+
+<!--<div class="container-fluid">-->
+  <!--<div class="row content">-->
+    <!--<div class="col-sm-3 sidenav">-->
+      <!--<h4><label>Filter By:</label></h4>-->
+      <!--<ul class="nav nav-pills nav-stacked">-->
+        <!--<div class="search-settings form-group form-group-sm">-->
+
+          <!--<div class="col-sm-3 padding-0 vcenter">-->
+            <!--<input class="form-check-input align-middle" id="pricefilter" onclick="applyFilters()" type="checkbox">-->
+            <!--<label>Price:</label>-->
+          <!--</div><div class="col-sm-9 padding-0">-->
+          <!--<input class="form-control" id="minPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Min">-->
+          <!--<input class="form-control" id="maxPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Max">-->
+        <!--</div>-->
+
+          <!--<div class="col-sm-3 padding-0 vcenter">-->
+            <!--<input class="form-check-input" id="sizefilter" onclick="applyFilters()" type="checkbox">-->
+            <!--<label>Size:</label>-->
+          <!--</div><div class="col-sm-9 padding-0">-->
+          <!--<input class="form-control" id="minSize" onkeypress="return hitEnter(event)" type="number" placeholder="Min">-->
+          <!--<input class="form-control" id="maxSize" onkeypress="return hitEnter(event)" type="number" placeholder="Max">-->
+        <!--</div>-->
+
+          <!--<div class="col-sm-3 padding-0 vcenter">-->
+            <!--<input class="form-check-input" id="cityfilter" onclick="applyFilters()" type="checkbox">-->
+            <!--<label>City:</label>-->
+          <!--</div><div class="col-sm-9 padding-0">-->
+          <!--<input class="form-control" id="cityIn" onkeypress="return hitEnter(event)" type="text">-->
+        <!--</div>-->
+
+          <!--<div class="col-sm-3 padding-0 vcenter">-->
+            <!--<input class="form-check-input" id="statefilter" onclick="applyFilters()" type="checkbox">-->
+            <!--<label>State:</label>-->
+          <!--</div><div class="col-sm-9 padding-0">-->
+          <!--<input class="form-control" id="stateIn" onkeypress="return hitEnter(event)" type="text">-->
+        <!--</div>-->
+
+          <!--<div class="col-sm-3 padding-0 vcenter">-->
+            <!--<input class="form-check-input" id="zipfilter" onclick="applyFilters()" type="checkbox">-->
+            <!--<label>ZIP:</label>-->
+          <!--</div><div class="col-sm-9 padding-0">-->
+          <!--<input class="form-control" id="zipIn" onkeypress="return hitEnter(event)" type="text">-->
+        <!--</div>-->
+
+          <!--<div class="col-sm-3 padding-0 vcenter">-->
+            <!--<input class="form-check-input" id="hostfilter" onclick="applyFilters()" type="checkbox">-->
+            <!--<label>Host:</label>-->
+          <!--</div><div class="col-sm-9 padding-0">-->
+          <!--<input class="form-control" id="hostIn" onkeypress="return hitEnter(event)" type="text">-->
+        <!--</div>-->
+
+          <!--<div class="col-sm-3 padding-0 vcenter">-->
+            <!--<input class="form-check-input" id="typefilter" onclick="applyFilters()" type="checkbox">-->
+            <!--<label>Type:</label>-->
+          <!--</div><div class="col-sm-9 padding-0">-->
+          <!--<select class="form-control" id="typeIn" onchange="applyFilters()">-->
+            <!--<option value="Apartment">Apartment</option>-->
+            <!--<option value="House">House</option>-->
+            <!--<option value="Condo">Condo</option>-->
+            <!--<option value="Studio">Studio</option>-->
+            <!--<option value="Room">Room</option>-->
+          <!--</select>-->
+        <!--</div>-->
+
+
+          <!--<div class="col-sm-3 padding-0 vcenter">-->
+            <!--<input class="form-check-input" id="bedfilter" onclick="applyFilters()" type="checkbox">-->
+            <!--<label>Beds:</label>-->
+          <!--</div><div class="col-sm-9 padding-0">-->
+          <!--<select class="form-control" id="bedIn" onchange="applyFilters()">-->
+            <!--<option value="1">1 Bed</option>-->
+            <!--<option value="2">2 Beds</option>-->
+            <!--<option value="3">3 Beds</option>-->
+            <!--<option value="4">4+ Beds</option>-->
+          <!--</select>-->
+        <!--</div>-->
+
+          <!--<div class="col-sm-3 padding-0 vcenter">-->
+            <!--<input class="form-check-input" id="bathfilter" onclick="applyFilters()" type="checkbox">-->
+            <!--<label>Baths:</label>-->
+          <!--</div><div class="col-sm-9 padding-0">-->
+          <!--<select class="form-control" id="bathIn" onchange="applyFilters()">-->
+            <!--<option value="1">1 Bath</option>-->
+            <!--<option value="2">2 Baths</option>-->
+            <!--<option value="3">3+ Baths</option>-->
+          <!--</select>-->
+        <!--</div>-->
+
+          <!--<div class="col-sm-12 padding-0 vcenter" style="margin-top: 5px">-->
+            <!--<input class="form-check-input" id="petsfilter" onclick="applyFilters()" type="checkbox">-->
+            <!--<label style="margin-bottom:0px">Pets Allowed</label>-->
+          <!--</div>-->
+
+          <!--<div class="col-sm-12 padding-0 vcenter">-->
+            <!--<input class="form-check-input" id="smokingfilter" onclick="applyFilters()" type="checkbox">-->
+            <!--<label style="margin-bottom:0px">Smoking Allowed</label>-->
+          <!--</div>-->
+
+        <!--</div>-->
+      <!--</ul><br>-->
+      <!--<div class="input-group">-->
+        <!--<input type="text" class="form-control" placeholder="Search...">-->
+        <!--<span class="input-group-btn">-->
+				<!--<button class="btn btn-default" type="button">-->
+				<!--<span class="glyphicon glyphicon-search"></span>-->
+				<!--</button>-->
+			<!--</span>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="col-sm-9">-->
+      <!--<div class="row">-->
+        <!--<div class="col-sm-4">-->
+          <!--<div class="panel panel-info">-->
+            <!--<div class="panel-heading">HOUSE #1</div>-->
+            <!--<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>-->
+            <!--<div class="panel-footer">Description #1</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-4">-->
+          <!--<div class="panel panel-danger">-->
+            <!--<div class="panel-heading">HOUSE #2</div>-->
+            <!--<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>-->
+            <!--<div class="panel-footer">Description #2</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-4">-->
+          <!--<div class="panel panel-success">-->
+            <!--<div class="panel-heading">HOUSE #3</div>-->
+            <!--<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>-->
+            <!--<div class="panel-footer">Description #3</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<br>-->
+
+      <!--<div class="row">-->
+        <!--<div class="col-sm-4">-->
+          <!--<div class="panel panel-info">-->
+            <!--<div class="panel-heading">HOUSE #4</div>-->
+            <!--<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>-->
+            <!--<div class="panel-footer">Description #4</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-4">-->
+          <!--<div class="panel panel-info">-->
+            <!--<div class="panel-heading">HOUSE #5</div>-->
+            <!--<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>-->
+            <!--<div class="panel-footer">Description #5</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-4">-->
+          <!--<div class="panel panel-info">-->
+            <!--<div class="panel-heading">HOUSE #6</div>-->
+            <!--<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>-->
+            <!--<div class="panel-footer">Description #6</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<!--<br><br>-->
+
+<!--<footer class="container-fluid text-center">-->
+  <!--<p>FOOTER</p>-->
+<!--</footer>-->
+
+
+
+<!--</body>-->
 
 <body>
 
-  <div class="topnav">
-    <a class="active" href="index.html">Home</a>
-    <a href="Listings.html">Listings</a>
-    <a href="ContactUs.html">Contact Us</a>
-    <a href="CreateListing.html">Create Listing</a>
-    <a href="CreateAccount.html">Login or Create Account</a>
-    <div class="search-container">
-      <form action="/action_page.php">
-        <input type="text" placeholder="Search.." name="search">
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+<div class="jumbotron sticky">
+  <div class="container text-center">
+    <h1>Housing Connect</h1>
+    <p>Find and live in the place you love!</p>
   </div>
+</div>
 
-  <div class="container">
+<nav class="navbar navbar-dark navbar-expand-md sticky-top bg-dark flex-md-nowrap p-0">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Logo</a>
+  <div class="form-control form-control-dark w-100">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Listings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Create Listing</a>
+      </li>
+    </ul>
+  </div>
+  <ul class="navbar-nav px-2">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="#"><i data-feather="user"></i> Your Account</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav px-2">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="#"><i data-feather="shopping-cart"></i> Saved Listings</a>
+    </li>
+  </ul>
+</nav>
 
-    <div class="left-bar">
-      <h2>Welcome!</h2>
-        <div class="search-settings">
-          <div>
-              <b>Filter By:</b>
-              <br><input id="pricefilter" onclick="applyFilters()" type="checkbox"> Price:
-                  <input id="minPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Min">
-                  <input id="maxPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Max">
+<div class="container-fluid">
+  <div class="row">
 
-              <br><input id="sizefilter" onclick="applyFilters()" type="checkbox"> Size:
-                  <input id="minSize" onkeypress="return hitEnter(event)" type="number" placeholder="Min">
-                  <input id="maxSize" onkeypress="return hitEnter(event)" type="number" placeholder="Max">
-
-              <br><input id="cityfilter" onclick="applyFilters()" type="checkbox"> City:
-                  <input id="cityIn" onkeypress="return hitEnter(event)" type="text">
-              <br><input id="statefilter" onclick="applyFilters()" type="checkbox"> State:
-                  <input id="stateIn" onkeypress="return hitEnter(event)" type="text">
-              <br><input id="zipfilter" onclick="applyFilters()" type="checkbox"> ZIP:
-                  <input id="zipIn" onkeypress="return hitEnter(event)" type="text">
-
-              <br><input id="hostfilter" onclick="applyFilters()" type="checkbox"> Host:
-                  <input id="hostIn" onkeypress="return hitEnter(event)" type="text">
-
-              <br><input id="typefilter" onclick="applyFilters()" type="checkbox"> Type:
-              <select id="typeIn" onchange="applyFilters()">
+    <nav class="col-md-3 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <!--<li class="nav-item">-->
+            <!--<a class="nav-link sidelink">-->
+              <!--<h5><label>Filter By:</label></h5>-->
+            <!--</a>-->
+          <!--</li>-->
+          <li class="nav-item">
+            <a class="nav-link side-link">
+              <div class="col-lg-3 col-md-4 padding-0 vcenter">
+                <input class="checkbox" id="pricefilter" onclick="applyFilters()" type="checkbox">
+                <label>Price:</label>
+              </div><div class="col-lg-9 col-md-8 padding-0">
+                <input class="form-control form-control-sm" id="minPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Min">
+                <input class="form-control form-control-sm" id="maxPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Max">
+              </div>
+            </a>
+            <a class="nav-link side-link">
+              <div class="col-lg-3 col-md-4 padding-0 vcenter">
+                <input class="checkbox" id="sizefilter" onclick="applyFilters()" type="checkbox">
+                <label>Size:</label>
+              </div><div class="col-lg-9 col-md-8 padding-0">
+                <input class="form-control form-control-sm" id="minSize" onkeypress="return hitEnter(event)" type="number" placeholder="Min">
+                <input class="form-control form-control-sm" id="maxSize" onkeypress="return hitEnter(event)" type="number" placeholder="Max">
+              </div>
+            </a>
+            <a class="nav-link side-link">
+              <div class="col-lg-3 col-md-4 padding-0 vcenter">
+                <input class="checkbox" id="cityfilter" onclick="applyFilters()" type="checkbox">
+                <label>City:</label>
+              </div><div class="col-lg-9 col-md-8 padding-0">
+                <input class="form-control form-control-sm" id="cityIn" onkeypress="return hitEnter(event)" type="text">
+              </div>
+            </a>
+            <a class="nav-link side-link">
+              <div class="col-lg-3 col-md-4 padding-0 vcenter">
+                <input class="checkbox" id="statefilter" onclick="applyFilters()" type="checkbox">
+                <label>State:</label>
+              </div><div class="col-lg-9 col-md-8 padding-0">
+                <input class="form-control form-control-sm" id="stateIn" onkeypress="return hitEnter(event)" type="text">
+              </div>
+            </a>
+            <a class="nav-link side-link">
+              <div class="col-lg-3 col-md-4 padding-0 vcenter">
+                <input class="checkbox" id="zipfilter" onclick="applyFilters()" type="checkbox">
+                <label>ZIP:</label>
+              </div><div class="col-lg-9 col-md-8 padding-0">
+                <input class="form-control form-control-sm" id="zipIn" onkeypress="return hitEnter(event)" type="text">
+              </div>
+            </a>
+            <a class="nav-link side-link">
+              <div class="col-lg-3 col-md-4 padding-0 vcenter">
+                <input class="checkbox" id="hostfilter" onclick="applyFilters()" type="checkbox">
+                <label>Host:</label>
+              </div><div class="col-lg-9 col-md-8 padding-0">
+                <input class="form-control form-control-sm" id="hostIn" onkeypress="return hitEnter(event)" type="text">
+              </div>
+            </a>
+            <a class="nav-link side-link">
+              <div class="col-lg-3 col-md-4 padding-0 vcenter">
+                <input class="checkbox" id="typefilter" onclick="applyFilters()" type="checkbox">
+                <label>Type:</label>
+              </div><div class="col-lg-9 col-md-8 padding-0">
+                <select class="form-control form-control-sm" id="typeIn" onchange="applyFilters()">
                   <option value="Apartment">Apartment</option>
                   <option value="House">House</option>
                   <option value="Condo">Condo</option>
                   <option value="Studio">Studio</option>
                   <option value="Room">Room</option>
-              </select>
-              <br><input id="bedfilter" onclick="applyFilters()" type="checkbox"> Type:
-              <select id="bedIn" onchange="applyFilters()">
+                </select>
+              </div>
+            </a>
+            <a class="nav-link side-link">
+              <div class="col-lg-3 col-md-4 padding-0 vcenter">
+                <input class="checkbox" id="bedfilter" onclick="applyFilters()" type="checkbox">
+                <label>Beds:</label>
+              </div><div class="col-lg-9 col-md-8 padding-0">
+                <select class="form-control form-control-sm" id="bedIn" onchange="applyFilters()">
                   <option value="1">1 Bed</option>
                   <option value="2">2 Beds</option>
                   <option value="3">3 Beds</option>
                   <option value="4">4+ Beds</option>
+                </select>
+              </div>
+            </a>
+            <a class="nav-link side-link">
+              <div class="col-lg-3 col-md-4 padding-0 vcenter">
+                <input class="checkbox" id="bathfilter" onclick="applyFilters()" type="checkbox">
+                <label>Baths:</label>
+              </div><div class="col-lg-9 col-md-8 padding-0">
+              <select class="form-control form-control-sm" id="bathIn" onchange="applyFilters()">
+                <option value="1">1 Bath</option>
+                <option value="2">2 Baths</option>
+                <option value="3">3+ Baths</option>
               </select>
-              <br><input id="bathfilter" onclick="applyFilters()" type="checkbox"> Type:
-              <select id="bathIn" onchange="applyFilters()">
-                  <option value="1">1 Bath</option>
-                  <option value="2">2 Baths</option>
-                  <option value="3">3+ Baths</option>
-              </select>
-
-              <br><input id="petsfilter" onclick="applyFilters()" type="checkbox"> Pets Allowed
-              <br><input id="smokingfilter" onclick="applyFilters()" type="checkbox"> Smoking Allowed
-          </div>
+            </div>
+            </a>
+            <a class="nav-link side-link">
+              <div class="col-md-12 padding-0 vcenter">
+                <input class="checkbox" id="petsfilter" onclick="applyFilters()" type="checkbox">
+                <label>Pets Allowed</label>
+              </div>
+            </a>
+            <a class="nav-link side-link">
+              <div class="col-md-12 padding-0 vcenter">
+                <input class="checkbox" id="smokingfilter" onclick="applyFilters()" type="checkbox">
+                <label>Smoking Allowed</label>
+              </div>
+            </a>
+          </li>
+        </ul>
       </div>
-    </div>
+    </nav>
 
-    <div class="main">
-      <h1>Housing Connect</h1>
-      <p>GENERAL INFORMATION OR IDK WHAT GOES HERE, REALLY</p>
-    </div>
+    <main role="main" class="col-md-9 pt-3 px-4">
+      <!--<div id="myCarousel" class="carousel slide carousel-bounds" data-ride="carousel">-->
+        <!--<ol class="carousel-indicators">-->
+          <!--<li data-target="#myCarousel" data-slide-to="0" class="active"></li>-->
+          <!--<li data-target="#myCarousel" data-slide-to="1" class=""></li>-->
+          <!--<li data-target="#myCarousel" data-slide-to="2" class=""></li>-->
+        <!--</ol>-->
+        <!--<div class="carousel-inner carousel-bounds">-->
+          <!--<div class="carousel-item carousel-item-next carousel-item-left carousel-bounds">-->
+            <!--<img class="first-slide carousel-img" src="https://childrensharbor.com/img/xtour-bay-house-front.jpg.pagespeed.ic.t9T3dEomuT.jpg" alt="First slide">-->
+            <!--<div class="container">-->
+              <!--<div class="carousel-caption text-left">-->
+                <!--<h1>Example headline.</h1>-->
+                <!--<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>-->
+                <!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="carousel-item">-->
+            <!--<img class="second-slide" src="https://www.marriedwithmoney.com/wp-content/uploads/2017/06/house.jpeg" alt="Second slide">-->
+            <!--<div class="container">-->
+              <!--<div class="carousel-caption">-->
+                <!--<h1>Another example headline.</h1>-->
+                <!--<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>-->
+                <!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="carousel-item active carousel-item-left">-->
+            <!--<img class="third-slide" src="https://www.marriedwithmoney.com/wp-content/uploads/2017/06/house.jpeg" alt="Third slide">-->
+            <!--<div class="container">-->
+              <!--<div class="carousel-caption text-right">-->
+                <!--<h1>One more for good measure.</h1>-->
+                <!--<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>-->
+                <!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">-->
+          <!--<span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+          <!--<span class="sr-only">Previous</span>-->
+        <!--</a>-->
+        <!--<a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">-->
+          <!--<span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+          <!--<span class="sr-only">Next</span>-->
+        <!--</a>-->
+      <!--</div>-->
+
+      <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+          <li data-target="#demo" data-slide-to="0" class="active"></li>
+          <li data-target="#demo" data-slide-to="1"></li>
+          <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row justify-content-center">
+              <img class="carousel-bounds" src="https://childrensharbor.com/img/xtour-bay-house-front.jpg.pagespeed.ic.t9T3dEomuT.jpg" alt="house1">
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row justify-content-center">
+              <img class="carousel-bounds" src="https://cdn.houseplans.com/product/o2d2ui14afb1sov3cnslpummre/w1024.jpg?v=15" alt="house2">
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row justify-content-center">
+              <img class="carousel-bounds" src="https://www.marriedwithmoney.com/wp-content/uploads/2017/06/house.jpeg" alt="house3">
+            </div>
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+
+      </div>
+    </main>
 
   </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script> feather.replace() </script>
 </body>
+
 </html>
