@@ -7,31 +7,39 @@
         <link rel = "stylesheet" type = "text/css" href = "CSS/main.css">
         <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
         <script src = "https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+		  <script src = "src/checkLoggedIn.js"></script>
         <script src = "src/init.js"></script>
     </head>
     <body>
         <div class="topnav">
-            <a href="index.html">Home</a>
-            <a class="active" href="profile.html">Profile</a>
-            <a href="Listings.html">Listings</a>
-            <a href="ContactUs.html">Contact Us</a>
+
+            <a href="index.html">Listings</a>
+			<a class="active" href="profile.html">Profile</a>
             <a href="CreateListing.html">Create Listing</a>
-            <a href="CreateAccount.html">Login or Create Account</a>
+			<p id="logo"> HOUSING CONNECT</p>
         </div>
         <div class="container">
             <div class="left-bar">
-                <h2>Bio and Contact info</h2>
+                <h2></h2>
             </div>
-            <div class="main" id="profile">
-                <h1 id="name"></h1>
-                <p>Change Name: </p><textarea id="nameTxt" cols="25" style ="background-color:#aec6cf; border: none;"></textarea>
+            <div class="main">
+                 <h3 id="name"></h3>
+            <div id="profile">
+               
+                <table>
+                    <tr>
+                        <td>
+                Name: <input id="nameTxt" cols="25" style ="color: white; background-color:#3CBC8D; border: none;"></input>
                 <h3>Contact info</h3>
-                <span><p>Phone: </p><textarea id="phone" cols="15" style="background-color:#aec6cf; border: none;"></textarea></span>
-                <p>Email: </p><textarea id="email" cols="25" style ="background-color:#aec6cf; border: none;"></textarea>
+                Phone: <input id="phone" cols="15" style="color: white;background-color:#3CBC8D; border: none;"></input>
+                <p></p>
+               Email:  <input  id="email" cols="25" style ="color: white;background-color:#3CBC8D; border: none;"></input>
+            </td><td>
                 <h3>About Me:</h3>
-                <textarea id="about" cols="80" rows="10" style="background-color:#aec6cf; border: none;"></textarea><br>
-                <input id="saveBtn" type="button" value="Save Changes"></input>
-            </div>
+                <textarea  id="about"  style="color: white;height:90px; width: 380px ;resize: none; background-color:#3CBC8D; border: none;"></textarea><br>
+                
+            </td></tr></table>
+            </div><input id="saveBtn" type="button" value="Save Changes"></input></div>
         </div>
         <script src="src/profile.js"></script>
     </body>

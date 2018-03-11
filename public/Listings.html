@@ -4,7 +4,7 @@
   <meta charset = "UTF-8">
   <title>Housing Connect</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel = "stylesheet" type = "text/css" href = "../CSS/main.css">
+  <link rel = "stylesheet" type = "text/css" href = "CSS/main.css">
   <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
   <script src = "https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
   <script src = "src/init.js"></script>
@@ -16,23 +16,15 @@
 <body>
 
   <div class="topnav">
-    <a href="index.html">Home</a>
-    <a href="profile.html">Profile</a>
     <a class="active" href="Listings.html">Listings</a>
-    <a href="ContactUs.html">Contact Us</a>
+	 <!-- <a href="ChangeBio.html">Profile</a> -->
     <a href="CreateListing.html">Create Listing</a>
-    <a href="#">Login or Create Account</a>
-    <div class="search-container">
-      <form action="/action_page.php">
-        <input type="text" placeholder="Search.." name="search">
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+	<p id="logo"> HOUSING CONNECT</p>
   </div>
 
     <div class="container">
       <div class="left-bar">
-        <h2>Welcome!</h2>
+        <h2></h2>
           <div class="search-settings">
             <div>
                 <b>Filter By:</b>
@@ -84,9 +76,9 @@
       </div>
 
     <div class="main">
-      <h1>Housing Connect: Listings</h1>
+      <h1></h1>
       <div id="inject"></div>
-      <button type="button" onclick="signOut()" style="margin-top: 5px">Logout</button>
+      <button type="button" id="logout" onclick="signOut()">Logout</button>
     </div>
 </div>
   <script src = "src/recentHistory.js"></script>

@@ -9,83 +9,76 @@
   <script src = "https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
   <script src = "src/init.js"></script>
   <script src = "src/checkLoggedIn.js"></script>
+  <script src = "src/viewListings.js"></script>
+  <script src = "src/classes/Listing.js"></script>
 </head>
 
 <body>
 
   <div class="topnav">
-    <a class="active" href="index.html">Home</a>
-    <a href="profile.html">Profile</a>
-    <a href="Listings.html">Listings</a>
-    <a href="ContactUs.html">Contact Us</a>
+    <a class="active" href="index.html">Listings</a>
+	 <a href="Profile.html">Profile</a>
     <a href="CreateListing.html">Create Listing</a>
-    <a href="#">Login or Create Account</a>
-    <div class="search-container">
-      <form action=/action_page.php">
-        <input type="text" placeholder="Search.." name="search">
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+	<p id="logo"> HOUSING CONNECT</p>
   </div>
 
-  <div class="container">
+    <div class="container">
+      <div class="left-bar">
+        <h2></h2>
+          <div class="search-settings">
+            <div>
+                <b>Filter By:</b>
+                <br><input id="pricefilter" onclick="applyFilters()" type="checkbox"> Price:
+                    <input id="minPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Min">
+                    <input id="maxPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Max">
 
-    <div class="left-bar">
-      <h2>Welcome!</h2>
-        <div class="search-settings">
-          <div>
-              <b>Filter By:</b>
-              <br><input id="pricefilter" onclick="applyFilters()" type="checkbox"> Price:
-                  <input id="minPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Min">
-                  <input id="maxPrice" onkeypress="return hitEnter(event)" type="number" placeholder="Max">
+                <br><input id="sizefilter" onclick="applyFilters()" type="checkbox"> Size:
+                    <input id="minSize" onkeypress="return hitEnter(event)" type="number" placeholder="Min">
+                    <input id="maxSize" onkeypress="return hitEnter(event)" type="number" placeholder="Max">
 
-              <br><input id="sizefilter" onclick="applyFilters()" type="checkbox"> Size:
-                  <input id="minSize" onkeypress="return hitEnter(event)" type="number" placeholder="Min">
-                  <input id="maxSize" onkeypress="return hitEnter(event)" type="number" placeholder="Max">
+                <br><input id="cityfilter" onclick="applyFilters()" type="checkbox"> City:
+                    <input id="cityIn" onkeypress="return hitEnter(event)" type="text">
+                <br><input id="statefilter" onclick="applyFilters()" type="checkbox"> State:
+                    <input id="stateIn" onkeypress="return hitEnter(event)" type="text">
+                <br><input id="zipfilter" onclick="applyFilters()" type="checkbox"> ZIP:
+                    <input id="zipIn" onkeypress="return hitEnter(event)" type="text">
+                <br><input id="typefilter" onclick="applyFilters()" type="checkbox"> Type:
+                <select id="typeIn" onchange="applyFilters()">
+                    <option value="Apartment">Apartment</option>
+                    <option value="House">House</option>
+                    <option value="Condo">Condo</option>
+                    <option value="Studio">Studio</option>
+                    <option value="Room">Room</option>
+                </select>
+                <br><input id="bedfilter" onclick="applyFilters()" type="checkbox"> Type:
+                <select id="bedIn" onchange="applyFilters()">
+                    <option value="1">1 Bed</option>
+                    <option value="2">2 Beds</option>
+                    <option value="3">3 Beds</option>
+                    <option value="4">4+ Beds</option>
+                </select>
+                <br><input id="bathfilter" onclick="applyFilters()" type="checkbox"> Type:
+                <select id="bathIn" onchange="applyFilters()">
+                    <option value="1">1 Bath</option>
+                    <option value="2">2 Baths</option>
+                    <option value="3">3+ Baths</option>
+                </select>
 
-              <br><input id="cityfilter" onclick="applyFilters()" type="checkbox"> City:
-                  <input id="cityIn" onkeypress="return hitEnter(event)" type="text">
-              <br><input id="statefilter" onclick="applyFilters()" type="checkbox"> State:
-                  <input id="stateIn" onkeypress="return hitEnter(event)" type="text">
-              <br><input id="zipfilter" onclick="applyFilters()" type="checkbox"> ZIP:
-                  <input id="zipIn" onkeypress="return hitEnter(event)" type="text">
+                <br><input id="petsfilter" onclick="applyFilters()" type="checkbox"> Pets Allowed
+                <br><input id="smokingfilter" onclick="applyFilters()" type="checkbox"> Smoking Allowed
+                <br><br>
+                <input type="checkbox" id="myListings" onclick="applyFilters()"> My Listings
+            </div>
 
-              <br><input id="hostfilter" onclick="applyFilters()" type="checkbox"> Host:
-                  <input id="hostIn" onkeypress="return hitEnter(event)" type="text">
-
-              <br><input id="typefilter" onclick="applyFilters()" type="checkbox"> Type:
-              <select id="typeIn" onchange="applyFilters()">
-                  <option value="Apartment">Apartment</option>
-                  <option value="House">House</option>
-                  <option value="Condo">Condo</option>
-                  <option value="Studio">Studio</option>
-                  <option value="Room">Room</option>
-              </select>
-              <br><input id="bedfilter" onclick="applyFilters()" type="checkbox"> Type:
-              <select id="bedIn" onchange="applyFilters()">
-                  <option value="1">1 Bed</option>
-                  <option value="2">2 Beds</option>
-                  <option value="3">3 Beds</option>
-                  <option value="4">4+ Beds</option>
-              </select>
-              <br><input id="bathfilter" onclick="applyFilters()" type="checkbox"> Type:
-              <select id="bathIn" onchange="applyFilters()">
-                  <option value="1">1 Bath</option>
-                  <option value="2">2 Baths</option>
-                  <option value="3">3+ Baths</option>
-              </select>
-
-              <br><input id="petsfilter" onclick="applyFilters()" type="checkbox"> Pets Allowed
-              <br><input id="smokingfilter" onclick="applyFilters()" type="checkbox"> Smoking Allowed
-          </div>
+        </div>
       </div>
-    </div>
 
     <div class="main">
-      <h1>Housing Connect</h1>
-      <p>GENERAL INFORMATION OR IDK WHAT GOES HERE, REALLY</p>
+      <h1></h1>
+      <div id="inject"></div>
+      <button type="button" id="logout" onclick="signOut()">Logout</button>
     </div>
-
-  </div>
+</div>
+  <script src = "src/recentHistory.js"></script>
 </body>
 </html>
