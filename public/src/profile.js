@@ -18,7 +18,6 @@ function initDisplayProfile() {
     let user = firebaseApp.auth().currentUser;
     let uid = user.uid;
     //let uid = "anon";
-
     firebase.database().ref('/users/' + uid).once('value').then(snapshot => {
         if (!snapshot.val()) initProfile();
         displayUserProfile();
@@ -28,15 +27,12 @@ function initDisplayProfile() {
 // Init Profile if No Ref found
 function initProfile() {
     let user = firebaseApp.auth().currentUser;
-
     let uid = user.uid;
     //let uid = "anon";
-
     let userRef = firebaseApp.database().ref('/users/' + uid);
     let initData = {
         name: "n/a",
         phone: "n/a",
-
         about: "n/a"
     };
     userRef.set(initData);
@@ -45,25 +41,19 @@ function initProfile() {
 // Displays User Profile
 function displayUserProfile() {
     let user = firebaseApp.auth().currentUser;
-
     let uid = user.uid;
     //let uid = "anon";
-
     firebaseApp.database().ref('/users/' + uid).once('value').then(snapshot => {
         let data = snapshot.val();
         let name = data.name || "n/a";
         let phone = data.phone || "n/a";
-
-        let email = data.email || "n/a";
 
         let about = data.about || "n/a";
 
         document.getElementById('name').textContent = name;
         document.getElementById('nameTxt').value = name;
         document.getElementById('phone').value = phone;
-
         document.getElementById('email').value = user.email;
-
         document.getElementById('about').value = about;
     });
 }
@@ -71,19 +61,15 @@ function displayUserProfile() {
 // Save Edited User Profile
 function saveEdit() {
     let user = firebaseApp.auth().currentUser;
-
     let uid = user.uid;
     if (!user) window.location = "/login";
 	email = document.getElementById('email').value;
 	firebaseApp.auth().currentUser.updateEmail(email);
     //let uid = "anon";
-
     let userRef = firebaseApp.database().ref('/users/' + uid);
     let editData = {
         name: document.getElementById('nameTxt').value,
         phone: document.getElementById('phone').value,
-
-
         about: document.getElementById('about').value
     };
     userRef.set(editData);
