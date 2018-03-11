@@ -102,6 +102,14 @@ checkbox{
 	padding-right: 20px;
 }
 
+.login {
+background-color: #3CBC8D;
+    color: white;
+  border: 0px;
+  margin: 3px;
+  height: 18px;
+}
+
 
 input[type=text] {
     background-color: #3CBC8D;

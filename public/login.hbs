@@ -30,22 +30,22 @@
       <div class="main">
 
       <div id="login">
-          <h1>Login</h1>
-          <input id="txtEmail" type="email" placeholder="Enter Email"/>
+          <h3>Login</h3>
+          <input class= "login" id="txtEmail" type="email" placeholder="Enter Email"/>
           <br>
-          <input id="txtPassword" type="password" placeholder="Enter Password"/>
+          <input class= "login" id="txtPassword" type="password" placeholder="Enter Password"/>
           <br>
-          <button onclick="login()">Login</button>
+          <button class= "login" onclick="login()">Login</button>
           <br>
-          <button onclick="goToSignUp()">Create an Account</button>
+          <button  class= "login" onclick="goToSignUp()">Create an Account</button>
       </div>
 
       <div style="display:none" id="signUp">
-          <h1>Sign Up</h1>
-          <input id="sEmail" type="email" placeholder="Enter Email"/>
-          <input id="sPassword" type="password" placeholder="Enter Password"/>
-          <button onclick="signUp()">Signup</button>
-          <button onclick="cancel()">Cancel</button>
+          <h3>Sign Up</h3>
+          <input class= "login" id="sEmail" type="email" placeholder="Enter Email"/>
+          <input class= "login" id="sPassword" type="password" placeholder="Enter Password"/>
+          <button class= "login" onclick="signUp()">Signup</button>
+          <button class= "login" onclick="cancel()">Cancel</button>
           <br>
           <input type="radio" id="tenant" name="group" checked="checked"> Tenant &nbsp
           <input type="radio" id="homeowner" name="group"> Homeowner<br>

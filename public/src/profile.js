@@ -20,7 +20,7 @@ function initDisplayProfile() {
     //let uid = "anon";
     firebase.database().ref('/users/' + uid).once('value').then(snapshot => {
         if (!snapshot.val()) initProfile();
-        displayUserProfile(user.email);
+        displayUserProfile();
     });
 }
 
@@ -33,14 +33,13 @@ function initProfile() {
     let initData = {
         name: "n/a",
         phone: "n/a",
-        email: user.email,
         about: "n/a"
     };
     userRef.set(initData);
 }
 
 // Displays User Profile
-function displayUserProfile(email) {
+function displayUserProfile() {
     let user = firebaseApp.auth().currentUser;
     let uid = user.uid;
     //let uid = "anon";
@@ -54,7 +53,7 @@ function displayUserProfile(email) {
         document.getElementById('name').textContent = name;
         document.getElementById('nameTxt').value = name;
         document.getElementById('phone').value = phone;
-        document.getElementById('email').value = email;
+        document.getElementById('email').value = user.email;
         document.getElementById('about').value = about;
     });
 }
@@ -63,6 +62,7 @@ function displayUserProfile(email) {
 function saveEdit() {
     let user = firebaseApp.auth().currentUser;
     let uid = user.uid;
+    if (!user) window.location = "/login";
 	email = document.getElementById('email').value;
 	firebaseApp.auth().currentUser.updateEmail(email);
     //let uid = "anon";
@@ -73,5 +73,5 @@ function saveEdit() {
         about: document.getElementById('about').value
     };
     userRef.set(editData);
-    displayUserProfile(email);
+    displayUserProfile();
 }
