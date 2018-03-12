@@ -44,7 +44,7 @@ function login() {
             window.location = "/";
         });
     }).catch(error => {
-
+        alert(error);
     });
 }
 
