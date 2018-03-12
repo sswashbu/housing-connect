@@ -50,7 +50,6 @@ function displayUserProfile() {
 
         let about = data.about || "n/a";
 
-        document.getElementById('name').textContent = name;
         document.getElementById('nameTxt').value = name;
         document.getElementById('phone').value = phone;
         document.getElementById('email').value = user.email;

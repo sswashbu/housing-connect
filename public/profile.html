@@ -1,44 +1,174 @@
-<!DOCTYPE html>
-<html ng-app>
-    <head>
-        <meta charset = "UTF-8">
-        <title>Housing Connect</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link rel = "stylesheet" type = "text/css" href = "CSS/main.css">
-        <script src = "https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-		  <script src = "src/checkLoggedIn.js"></script>
-        <script src = "src/init.js"></script>
-    </head>
-    <body>
-        <div class="topnav">
-            <a href="index.html">Listings</a>
-			<a class="active" href="profile.html">Profile</a>
-            <a href="CreateListing.html">Create Listing</a>
-			<p id="logo"> HOUSING CONNECT</p>
-        </div>
-        <div class="container">
-            <div class="left-bar">
-                <h2></h2>
-            </div>
-            <div class="main">
-                 <h3 id="name"></h3>
-            <div id="profile">
-               
-                <table>
-                    <tr>
-                        <td>
-                Name: <input id="nameTxt" cols="25" style ="color: white; background-color:#3CBC8D; border: none;"></input>
-                <h3>Contact info</h3>
-                Phone: <input id="phone" cols="15" style="color: white;background-color:#3CBC8D; border: none;"></input>
-                <p></p>
-               Email:  <input  id="email" cols="25" style ="color: white;background-color:#3CBC8D; border: none;"></input>
-            </td><td>
-                <h3>About Me:</h3>
-                <textarea  id="about"  style="color: white;height:90px; width: 380px ;resize: none; background-color:#3CBC8D; border: none;"></textarea><br>
-                
-            </td></tr></table>
-            </div><input id="saveBtn" type="button" value="Save Changes"></input></div>
-        </div>
-        <script src="src/profile.js"></script>
-    </body>
+<!--<!DOCTYPE html>-->
+<!--<html ng-app>-->
+<!--<head>-->
+  <!--<meta charset="UTF-8">-->
+  <!--<title>Housing Connect</title>-->
+  <!--<meta name="viewport" content="width=device-width,initial-scale=1">-->
+  <!--<link rel="stylesheet" type="text/css" href="CSS/main.css">-->
+  <!--<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>-->
+  <!--<script src="src/checkLoggedIn.js"></script>-->
+  <!--<script src="src/init.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="topnav">-->
+  <!--<a href="index.html">Listings</a>-->
+  <!--<a class="active" href="profile.html">Profile</a>-->
+  <!--<a href="CreateListing.html">Create Listing</a>-->
+  <!--<p id="logo"> HOUSING CONNECT</p>-->
+<!--</div>-->
+<!--<div class="container">-->
+  <!--<div class="left-bar">-->
+    <!--<h2></h2>-->
+  <!--</div>-->
+  <!--<div class="main">-->
+    <!--<h3 id="name"></h3>-->
+    <!--<div id="profile">-->
+
+      <!--<table>-->
+        <!--<tr>-->
+          <!--<td>-->
+            <!--Name: <input id="nameTxt" cols="25" style="color: white; background-color:#3CBC8D; border: none;"></input>-->
+            <!--<h3>Contact info</h3>-->
+            <!--Phone: <input id="phone" cols="15" style="color: white;background-color:#3CBC8D; border: none;"></input>-->
+            <!--<p></p>-->
+            <!--Email: <input id="email" cols="25" style="color: white;background-color:#3CBC8D; border: none;"></input>-->
+          <!--</td>-->
+          <!--<td>-->
+            <!--<h3>About Me:</h3>-->
+            <!--<textarea id="about"-->
+                      <!--style="color: white;height:90px; width: 380px ;resize: none; background-color:#3CBC8D; border: none;"></textarea><br>-->
+
+          <!--</td>-->
+        <!--</tr>-->
+      <!--</table>-->
+    <!--</div>-->
+    <!--<input id="saveBtn" type="button" value="Save Changes"></input></div>-->
+<!--</div>-->
+<!--<script src="src/profile.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Housing Connect</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="CSS/index.css">
+
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script src="src/init.js"></script>
+  <script src="src/checkLoggedIn.js"></script>
+  <script src="src/classes/Listing.js"></script>
+  <script src="src/addListings.js"></script>
+</head>
+
+<body>
+
+<!--JUMBOTRON-->
+<div class="jumbotron sticky">
+  <div class="container text-center">
+    <h1>Housing Connect</h1>
+    <p>Find and live in the place you love!</p>
+  </div>
+</div>
+
+<!--TOP MENU NAV-->
+<nav class="navbar navbar-dark navbar-expand-md sticky-top bg-dark flex-md-nowrap p-0">
+  <a class="navbar-brand col-sm-3 col-md-3 mr-0" href="index.html"> <i data-feather="home"></i> Housing Connect</a>
+  <div class="form-control form-control-dark w-100">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Listings.html">Listings</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="CreateListing.html">Create Listing<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+  <ul class="navbar-nav px-2">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="profile.html"><i data-feather="user"></i> Your Account</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container" style="margin-top: 10px;">
+  <div class="row">
+
+    <div class="col-lg-12" style="text-align: center">
+      <input id="nameTxt" cols="25" class="form-control" style="border:none; text-align: center; font-size: -webkit-xxx-large; font-family: sans-serif;">
+      <img class="rounded-circle" src="https://cdn3.iconfinder.com/data/icons/essentials-vol-1-1/512/User-2-512.png"
+           alt="Generic placeholder image" width="140" height="140">
+      <div class="col-lg-12" id="profile">
+        <h3 class="mb-2">Contact info:</h3>
+        <h6 class="mb-0">Phone:</h6>
+        <input id="phone" cols="15" class="form-control" style="border:none; text-align: center; padding:0;">
+        <h6 class="mb-0">Email:</h6>
+        <input id="email" cols="25" class="form-control mb-2" style="border:none; text-align: center; padding:0;">
+        <h3>About Me:</h3>
+        <textarea id="about" style="border:none; text-align: center; height: 90px;" class="form-control"></textarea><br>
+        <input id="saveBtn" class="btn btn-primary mb-5" type="button" value="Save Changes">
+      </div>
+    </div>
+
+    <!--<div class="main">-->
+      <!--<h3 id="name"></h3>-->
+      <!--<div id="profile">-->
+
+        <!--<table>-->
+          <!--<tr>-->
+            <!--<td>-->
+              <!--Name: <input id="nameTxt" cols="25" style="color: white; background-color:#3CBC8D; border: none;"></input>-->
+              <!--<h3>Contact info</h3>-->
+              <!--Phone: <input id="phone" cols="15" style="color: white;background-color:#3CBC8D; border: none;"></input>-->
+              <!--<p></p>-->
+              <!--Email: <input id="email" cols="25" style="color: white;background-color:#3CBC8D; border: none;"></input>-->
+            <!--</td>-->
+            <!--<td>-->
+              <!--<h3>About Me:</h3>-->
+              <!--<textarea id="about"-->
+                        <!--style="color: white;height:90px; width: 380px ;resize: none; background-color:#3CBC8D; border: none;"></textarea><br>-->
+
+            <!--</td>-->
+          <!--</tr>-->
+        <!--</table>-->
+      <!--</div>-->
+      <!--<input id="saveBtn" type="button" value="Save Changes"></input></div>-->
+
+  </div>
+</div>
+
+<script src="src/profile.js"></script>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script> feather.replace() </script>
+</body>
+
 </html>
+
+

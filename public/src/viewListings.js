@@ -218,7 +218,7 @@ function createListing(listing) {
             };
             deleteButton.innerHTML = "X";
             deleteButton.setAttribute("id", "delete");
-            deleteButton.className = "x-button btn btn-sm btn-outline-danger badge badge-pill";
+            deleteButton.className = "x-button btn btn-sm btn-outline-danger";
 
             imageDiv.appendChild(deleteButton);
 
@@ -421,7 +421,7 @@ function createListing(listing) {
             };
             deleteButton.innerHTML = "X";
             deleteButton.setAttribute("id", "delete");
-            deleteButton.className = "x-button btn btn-sm btn-outline-danger badge badge-pill";
+            deleteButton.className = "x-button btn btn-sm btn-outline-danger";
 
             imageDiv.appendChild(deleteButton);
 
