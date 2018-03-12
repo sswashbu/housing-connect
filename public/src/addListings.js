@@ -45,6 +45,7 @@ function addListing() {
     listing.setSmoking(smoking);
     listing.setSize(size);
     listing.setImage(image);
-	
+
     ref.push(listing);
+    alert('Listing Added to the List.');
 }
