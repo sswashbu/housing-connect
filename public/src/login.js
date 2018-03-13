@@ -71,6 +71,21 @@ function signUp() {
     });
 }
 
+/**
+ * Sign out of current login session
+ *
+ * When a user requests to sign out:
+ *  - remove the user's authentication token from sessionStorage
+ *  - sign user out of Firebase
+ *  - redirect to login screen
+ */
+function logout() {
+    sessionStorage.removeItem('token');
+    firebase.auth().signOut();
+    document.location.reload();
+}
+
+
 /** Enter key presses login button */
 document.onkeydown = loginE;
 function loginE(e) {

@@ -154,6 +154,7 @@ function createListing(listing) {
     img.className = "card-img-top gallery-img img-fit";
     if(listing.val.image) {
         img.setAttribute("src", listing.val.image);
+        img.setAttribute("onerror", "this.src='http://silviahartmann.com/background-tile-art/images/black_background_tile.jpg'");
     } else {
         img.setAttribute("src", "http://silviahartmann.com/background-tile-art/images/black_background_tile.jpg");
     }
@@ -537,20 +538,6 @@ function filterBeds(bedNum) {
             listings[i].visible = l.bedNum === bedNum && listings[i].visible;
         }
     }
-}
-
-/**
- * Sign out of current login session
- *
- * When a user requests to sign out:
- *  - remove the user's authentication token from sessionStorage
- *  - sign user out of Firebase
- *  - redirect to login screen
- */
-function signOut() {
-    sessionStorage.removeItem('token');
-    firebase.auth().signOut();
-    document.location.reload();
 }
 
 /**

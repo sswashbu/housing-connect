@@ -88,7 +88,8 @@
     <input type="password" id="sPassword" class="form-control" placeholder="Password" required="">
     <div class="checkbox mb-3">
       <label>
-        <input type="checkbox" value="remember-me"> Remember me
+        <input type="radio" id="tenant" name="group" checked="checked"> Tenant &nbsp
+        <input type="radio" id="homeowner" name="group"> Homeowner<br>
       </label>
     </div>
     <button class="btn btn btn-primary btn-block" onclick="signUp()">Sign up</button>
