@@ -6,7 +6,7 @@ property owner should be able to post a listing of their properties with a pictu
 Potential tenants should be able to search and filter the list of the properties.
 
 ## Important! Read me. 
-Due to issues with merging the bootstrap integration branch to the master, the demoable version is in the **bootstrap-integration branch**. This is because Alex Petrusca thought he had merged the branch into the master but apparently it didn't happen. Therefore we have the old styled website and the new redesigned bootstrap version. Although both should still have the same functionality but with different stylings. The bootstrap version also has a few minor issues noticed after the freeze which was fixed and pushed to a new branch called **bootstrap-integration-fixed**. The latest scrum docs are still pushed only to **master**.
+Due to issues with merging the **bootstrap-integration** to **master**, the latest version before the code freeze is in the **bootstrap-integration branch** and the demo version with bug fixes is in the **bootstrap-integration-fixed** branch. This is because Alex Petrusca thought he had merged the branch into the master but apparently it didn't happen. Therefore we have the old styled website and the new redesigned bootstrap version. Although both should still have the same functionality but with different stylings. The bootstrap version also has a few minor issues noticed after the freeze which was fixed and pushed to a new branch called **bootstrap-integration-fixed**. The latest scrum docs are still pushed only to **master**.
 
 ## Installation Steps
 1. Download and extract the zip or pull a clone of the branch.
