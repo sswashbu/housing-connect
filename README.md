@@ -5,6 +5,16 @@ We aim to have a simple, easy to use interface. If we get to it maybe have a cha
 property owner should be able to post a listing of their properties with a picture and description.
 Potential tenants should be able to search and filter the list of the properties.
 
+## Important! Read me. 
+Due to issues with merging the bootstrap integration branch to the master, the demoable version is in the **bootstrap-integration branch**. This is because Alex Petrusca thought he had merged the branch into the master but apparently it didn't happen. Therefore we have the old styled website and the new redesigned bootstrap version. Although both should still have the same functionality but with different stylings. The bootstrap version also has a few minor issues noticed after the freeze which was fixed and pushed to a new branch called **bootstrap-integration-fixed**. The latest scrum docs are still pushed only to **master**.
+
+## Installation Steps
+1. Download and extract the zip or pull a clone of the branch.
+2. Go into the local file directory and run **npm -install**
+3. Go back to the root directory and run **firebase serve --only functions,hosting** to run the site on a localhost.
+4. The site should now be up.
+
+## Links
 These should link to the google drive stuff for this project, assuming nothing bad happens to the links.
  
  * User Stories - https://drive.google.com/open?id=1LQheMcZzE56BlxwpTqsizyO1pfd_hQnCCRPR31tyWKc 
